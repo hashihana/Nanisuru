@@ -5,8 +5,12 @@
 「友達と何か面白いことをしたいけど何も思いつかない。」「いつも同じようなデートをしていてつまらない。」
 そんな人の悩みを解決するサービスです！
 
-## URL
-https://docs.google.com/spreadsheets/d/1F-pYoFfnhLf6kqo3VEGi9HyxfF2uO40ArZBaE2N5cAY/edit?usp=sharing
+### 基本機能
+-コメント機能
+_レビュー機能
+-絞り込み表示機能
+-ランキング機能
+-ゲストログイン機能
 
 ### テーマを選んだ理由
 私自身が新しいことや面白いスポットを見つけて行くことが好きなのですが、
@@ -20,9 +24,9 @@ https://docs.google.com/spreadsheets/d/1F-pYoFfnhLf6kqo3VEGi9HyxfF2uO40ArZBaE2N5
 ### 主な利用シーン
 時間があるがやりたいことが思いつかない時。デートや遊びの企画をする時等。
 
-## 実装した機能
-
 ## 設計書
+##実装機能リストURL
+https://docs.google.com/spreadsheets/d/1F-pYoFfnhLf6kqo3VEGi9HyxfF2uO40ArZBaE2N5cAY/edit?usp=sharing
 
 ## 開発環境
 OS：Linux(CentOS)
