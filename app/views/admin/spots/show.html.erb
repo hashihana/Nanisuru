@@ -1,0 +1,61 @@
+<div class="wrapper flex">
+	<div class="sidebar">
+		<h3>ジャンル検索</h3>
+		<% @genres.each do |genre| %>
+		<%= link_to genre.name, admin_spots_path(genre_id: genre.id) %>
+		<% end %>
+	</div>
+	<div class="content">
+		<h2 class="section-ttl"><%= @spot.name %></h2>
+		<!--<%#= render 'layouts/error_messages', resource: @ %>-->
+		<div class="flex">
+			<%= image_tag @spot.get_image, class: "spot_image" %>
+			<div class="spot_info">
+
+				<p>ジャンル: <%= link_to @spot.genre.name, admin_spots_path(genre_id: @spot.genre_id) %></p>
+
+				<h4><%= @spot.address %></h4><br>
+				<h4><%= @spot.introduction %></h4><br>
+
+				  <% if logged_in? %>
+        <%= render 'favorites/like_button', spot: @spot %>
+
+        <!--口コミ-->
+        <% @reviews.each do |c| %>
+            <div>
+              　<% unless c.customer.blank? %>
+            　　      <%= link_to c.customer.name, admin_customer_path(c.customer_id)%>
+            　　<% end %>
+            　　<h5><%= c.title %></h5>
+          　　　　<%= c.content %>
+        　　</div>
+  　　　　<% end %>
+
+        <!--口コミ投稿フォーム-->
+        <div class="jumbotron bg-light">
+            <h4>口コミを投稿する</h4>
+            <%= form_with model: [@spot, @reviews], local: true do |f| %>
+                <div class="form-group">
+                    <%= f.label :title, "タイトル"%>
+                    <%= f.text_field :title, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :comment, "コメント"  %>
+                    <%= f.text_area :comment, class: "form-control" %>
+                </div>
+
+                <%= f.submit 'コメントする', class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    <% else %>
+        <div class="text-center">
+            <h5 class="mt-5">口コミお気に入り機能を使うにはログインしてください</h5>
+            <p>会員登録がまだの方は　→　<%= link_to '会員登録', signup_path %>　</p>
+        </div>
+    <% end %>
+			</div>
+			
+			</div>
+		</div>
+	</div>
+</div>
