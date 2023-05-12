@@ -1,5 +1,10 @@
 class Admin::SpotsController < ApplicationController
   
+  
+    def new
+      @spot = Spot.new
+    end
+  
    def index
     @genres = Genre.all
     if params[:genre_id]

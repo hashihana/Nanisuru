@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2023_05_03_143508) do
   create_table "reviews", force: :cascade do |t|
     t.integer "spot_id"
     t.integer "customer_id"
+    t.string "title"
     t.string "comment"
     t.float "star"
     t.datetime "created_at", precision: 6, null: false

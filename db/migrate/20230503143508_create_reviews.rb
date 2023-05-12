@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       
       t.integer :spot_id
       t.integer :customer_id
+      t.string :title
       t.string :comment
       t.float :star
       
