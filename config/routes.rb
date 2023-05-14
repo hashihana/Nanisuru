@@ -6,9 +6,10 @@ devise_for :customers, controllers: {
 }
 
   namespace :admin do
-    resources :spots
+    resources :spots do
+      resources :reviews
+    end
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :reviews, only: [:create]
     get "search" => "spots#search"
   end
 

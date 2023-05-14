@@ -1,9 +1,12 @@
 class Spot < ApplicationRecord
   
-  
+  has_many :reviews, dependent: :destroy
+  belongs_to :genre
   def self.search(keyword)
     where(["name like? OR address like?", "%#{keyword}%", "%#{keyword}%"])
   end
+  
+  scope :where_genre_active, -> { joins(:genre).where(genres: { is_active: true }) }
   
   has_one_attached :spot_image
   

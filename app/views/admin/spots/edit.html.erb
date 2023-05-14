@@ -1,7 +1,7 @@
 <div class="inner">
-	<h2 class="section-ttl">スポット新規登録</h2>
+	<h2 class="section-ttl"><%= @spot.name %>の編集</h2>
 	
-  <%= form_with model: @spot, url: admin_spots_path do |f| %>
+	 <%= form_with model: @spot, url: admin_spots_path(@spot) do |f| %>
 	<!--<%#= render 'layouts/error_messages', resource: item %>-->
 	<div class="flex">
 		<div>
@@ -40,9 +40,9 @@
 			</tbody>
 		</table>
 		<div class="flex align-center pl5">
-			<%= f.submit '登録', class: "btn btn-primary" %>
+			<%= f.submit '更新', class: "btn btn-primary" %>
 		</div>
 	</div>
 <% end %>
-  
+	
 </div>
