@@ -9,6 +9,7 @@ devise_for :customers, controllers: {
     resources :spots do
       resources :reviews
     end
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     get "search" => "spots#search"
   end

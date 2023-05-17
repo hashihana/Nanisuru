@@ -19,11 +19,15 @@
 
 		 <!--<%# if logged_in? %>-->
    <!--     <%#= render 'favorites/like_button', spot: @spot %>-->
+   
+     <!--口コミ-->
+     <h5>「行った」レビュー</h5>
       <div class="reviews-index">
         <%= render "admin/reviews/index", spot: @spot %>
       </div>
 
-      <%= render "admin/reviews/form", spot: @spot, review: @review %>
+      <!--口コミ投稿フォーム-->
+      <!--<%#= render "admin/reviews/form", spot: @spot, review: @review %>-->
 
 
         <!--口コミ-->
