@@ -15,6 +15,19 @@ class Admin::ReviewsController < ApplicationController
   #   end
   # end
   
+  def index
+    if params[:customer_id]
+      @customer = Customer.find(params[:customer_id])
+      @reviews = @customer.reviews.page(params[:page])
+    elsif params[:created_at] == "today"
+      @reviews = Review.reviewed_today.includes(:customer).page(params[:page])
+    else
+      @reviews = Review.includes(:customer).page(params[:page])
+    end
+  end
+
+  
+  
   def create
     spot = Spot.find(params[:spot_id])
     @comment = current_customer.reviews.new(review_params)

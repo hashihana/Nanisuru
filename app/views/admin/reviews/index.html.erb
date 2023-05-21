@@ -1,0 +1,30 @@
+<div class="inner">
+	<h2 class="section-ttl">
+		<% if params[:customer_id] %>
+			<%= @customer.nickname %>さんの注文履歴一覧
+		<% elsif params[:created_at] == "today" %>
+			本日のレビュー一覧
+		<% else %>
+			本日のレビュー
+		<% end %>
+	</h2>
+	<table class="admin_reviews has_border">
+		<thead>
+			<tr>
+				<th>レビュー日</th>
+				<th>レビュー者</th></th>
+				<th>レビュー詳細</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @reviews.each do |review| %>
+				<tr>
+					<td><%= link_to review.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_review_path(review), class: "underline" %></td>
+					<td><%= link_to review.customer.nickname, admin_customer_path(review.customer) %></td>
+					<td><%= link_to review.comment, admin_spot_review_path(review) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	</div>
+	<%= paginate @reviews %>
