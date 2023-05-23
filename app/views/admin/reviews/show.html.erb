@@ -1,33 +1,32 @@
-<section class="inner">
+<div class="inner">
 	<h2 class="section-ttl">レビュー詳細</h2>
 	<table class="order_info mb3 has_border">
 	
-		<h3 class="section-ttl"><%= @spot.name %></h3>
+		<h3 class="section-ttl"><%= @review.spot.name %></h3>
 		<div class="flex">
-			<%= image_tag @spot.get_image, class: "item_image" %>
-			<div class="item_info">
+			<%= image_tag @review.spot.get_spot_image(100, 100), class: "spot_image" %>
+			<div class="review_info">
 		</thead>
 		<tbody>
 		  <tr>
 		    <td>ジャンル</td>
-		    	<p><%= link_to @spot.genre.name, spots_path(genre_id: @spot.genre_id) %></p>
+		    	<p><%= link_to @review.spot.genre.name, admin_spots_path(genre_id: @review.spot.genre_id) %></p>
 		  </tr>
 		  <tr>
 				<td>投稿者</td>
-				<td><%= link_to @customer.nickname, admin_customer_path(@customer), class: "underline" %></td>
+				<td><%= link_to @review.spot.customer.nickname, admin_customer_path(@review), class: "underline" %></td>
 			</tr>
 			<tr>
 				<td>投稿日時</td>
 				<td><%= @review.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
 			</tr>
-			
-					<%= form_with model:@order, url: admin_order_path(@order) do |f| %>
-						<%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
-						<%= f.submit "更新", class: "btn btn-primary" %>
-					<% end %>
+			<td>
+			 <%= link_to "削除", admin_spot_review_path(spot, review), method: :delete, "data-confirm" => "本当に削除してよろしいでしょうか？", class: "btn btn-danger pull-right", remote: true %>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 	</div>
-</section>
+</div>
+
+
