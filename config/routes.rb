@@ -14,6 +14,11 @@ devise_for :customers, controllers: {
     get "search" => "spots#search"
   end
 
+scope module: :public do
+    root 'homes#top'
+    resources :spots
+end
+
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
