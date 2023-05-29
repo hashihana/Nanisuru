@@ -1,6 +1,7 @@
 <div class="wrapper flex">
 	<div class="sidebar">
 		<h3>ジャンル一覧</h3>
+		<div><%= flash[:notice] %></div>
 		<% @genres.each do |genre| %>
 			<%= link_to genre.name, spots_path(genre_id: genre.id) %>
 		<% end %>
@@ -8,9 +9,9 @@
 	<div class="content">
 		<div class="top-box">
 		
-		<%= image_tag 'nanisuru.jpeg', size: '700x400' %>
-		
+		<%= image_tag 'nanisuru.jpeg', size: '700x380' %>
 		</div>
+		<div><%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %></div>
 		<h2 class="section-ttl">おすすめスポット</h2>
 		<div class="items">
 			<% @random.each do |spot| %>
