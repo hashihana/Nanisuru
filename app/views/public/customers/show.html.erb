@@ -1,0 +1,20 @@
+<div class="inner">
+  <% if flash[:notice] %>
+    <p class="text-active"><%= flash[:notice] %></p>
+  <% end %>
+	<h2 class="section-ttl">マイページ</h2>
+		<div class="sidebar">
+		<h3></h3>
+		<!--<%# @customer.each do |customer| %>-->
+		<!--<p><%#= image_tag customer.get_profile_image(100,100), class:"rounded-circle";  %></p>-->
+		<!--<h5 class="profile-name display-4"><%#= customer.nickname %></h5>-->
+		<!--<%# end %>-->
+			<%= link_to "編集する", edit_customer_path, class: "btn btn-success ml2" %>
+			<%= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-success ml2" %>
+	</div>
+	
+	<!--<div class="flex">-->
+	<!--	<%#= link_to "「行きたい」を見る", favorite_path, class: "btn btn-primary" %>-->
+	<!--</div>-->
+</div>
+<%= render 'reviews/list', reviews: @reviews %>

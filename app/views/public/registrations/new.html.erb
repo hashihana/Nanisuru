@@ -4,7 +4,7 @@
   
   <%= form_with model: @customer, url: registration_path(resource_name), local: true do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-    <!--<%#= render 'layouts/error_messages', resource: @customer %>-->
+    <%= render 'layouts/error_messages', resource: @customer %>
     <table class="customer_info customer_form">
       <thead>
         <th></th>

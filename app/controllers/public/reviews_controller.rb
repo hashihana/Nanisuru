@@ -1,22 +1,8 @@
-class Admin::ReviewsController < ApplicationController
-  
-    # before_action :authenticate_user!
-
-  # def create
-  #   spot = Spot.find(params[:spot_id])
-  #   @review = spot.reviews.build(review_params)
-  #   @review.customer_id = current_customer.id
-  #   if @review.save
-  #     flash[:success] = "コメントしました"
-  #     redirect_back(fallback_location: root_path)
-  #   else
-  #     flash[:success] = "コメントできませんでした"
-  #     redirect_back(fallback_location: root_path)
-  #   end
-  # end
+class Public::ReviewsController < ApplicationController
   
   def show
-     @review = Review.find(params[:id])
+     @spot = Spot.find(params[:id])
+     @review = Review.new
   end
   
   def index
@@ -28,6 +14,14 @@ class Admin::ReviewsController < ApplicationController
     else
       @reviews = Review.includes(:customer).page(params[:page])
     end
+  end
+  
+  def create
+    spot = Spot.find(params[:spotid])
+    comment = current_customer.reviews.new(review_params)
+    comment.spote_id = spot.id
+    comment.save
+    redirect_to post_image_path(post_image)
   end
   
   # def create
@@ -48,4 +42,4 @@ class Admin::ReviewsController < ApplicationController
       params.require(:review).permit(:comment)
     end
 end
-
+end

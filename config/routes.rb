@@ -15,12 +15,16 @@ devise_for :customers, controllers: {
   end
 
 scope module: :public do
+ 
     root 'homes#top'
-    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
-    resources :spots
+    # post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
+    resources :spots do
+    resources :reviews
+  end
+    get "search" => "spots#search"
+    resources :customers, only: [:index, :show, :edit, :update]
     
 end
-
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
