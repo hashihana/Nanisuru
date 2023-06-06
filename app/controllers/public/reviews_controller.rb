@@ -42,4 +42,3 @@ class Public::ReviewsController < ApplicationController
       params.require(:review).permit(:comment)
     end
 end
-end

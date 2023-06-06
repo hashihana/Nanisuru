@@ -5,6 +5,8 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @spot = Spot.find(params[:id])
+    @review = Review.new
   end
 
   def edit
