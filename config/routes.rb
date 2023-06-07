@@ -23,9 +23,6 @@ end
 scope module: :public do
  
     root 'homes#top'
-    
-
-    # post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
     resources :spots do
     resources :reviews
   end

@@ -1,22 +1,28 @@
-<div class="wrapper flex">
-	<div class="sidebar">
-		<h3>ジャンル一覧</h3>
-		<% @genres.each do |genre| %>
-			<%= link_to genre.name, admin_spots_path(genre_id: genre.id) %>
-		<% end %>
-	</div>
+<!--<div class="wrapper flex">-->
+	
+	<div class="container wrapper flex">
+  <div class="row">
+    <div class="col-md-3">
+	<%= render 'admin/genres/genre_sidebar', genres: @genres %>
+	 </div>
+	<!--<div class="sidebar">-->
+	<!--	<h3>ジャンル一覧</h3>-->
+	<!--	<%# @genres.each do |genre| %>-->
+	<!--		<%#= link_to genre.name, admin_spots_path(genre_id: genre.id) %>-->
+	<!--	<%# end %>-->
+	<!--</div>-->
 	<div class="content">
 		<%= render 'serach', {spots: @spots, keyword: @keyword} %>
 		<% if params[:genre_id] %>
-			<h2 class="section-ttl"><%= @genre.name %>の商品一覧 (全<%= @all_spots_count %>件)</h2>
+			<h4 class="section-ttl"><%= @genre.name %>のスポット (全<%= @all_spots_count %>件)</h4>
 		<% else %>
-			<h2 class="section-ttl">商品一覧 (全<%= @all_spots_count %>件)</h2>
+			<h4 class="section-ttl">スポット (全<%= @all_spots_count %>件)</h4>
 		<% end %>
 		<% if @spots.first %> 
 			<div class="spots">
 				<% @spots.each do |spot| %>
 					<%= link_to spot_path(spot) do %>
-						<%= image_tag spot.get_image, format: "jpeg", fallback: "no-image.png" %>
+						<%= image_tag spot.get_spot_image(100,100), format: "jpeg", fallback: "no-image.png" %>
 						<h5><%= spot.genre.name %></h5>
 						<p><%= spot.name %></p>
 					<% end %>
@@ -26,5 +32,6 @@
 		<% else %>
 			<h3>対応するスポットはありませんでした。</h3>
 		<% end %>
+	</div>
 	</div>
 </div>
