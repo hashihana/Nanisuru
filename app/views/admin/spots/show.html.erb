@@ -17,6 +17,7 @@
 			<div class="spot_info">
 
 				<p>ジャンル: <%= link_to @spot.genre.name, admin_spots_path(genre_id: @spot.genre_id) %></p>
+				
 
 				<p><%= @spot.address %></p><br>
 				<p><%= @spot.introduction %></p><br>
@@ -25,9 +26,10 @@
    <!--     <%#= render 'favorites/like_button', spot: @spot %>-->
    
      <!--口コミ-->
-     <h5>「行った」レビュー</h5>
-      <div class="reviews-index">
+     <h5>カスタマーレビュー</h5>
+ 
         <!--<%#= render "admin/reviews/index", spot: @spot %>-->
+         <%= render "public/reviews/list", spot: @spot, review: @review %>
       </div>
 
       <!--口コミ投稿フォーム-->

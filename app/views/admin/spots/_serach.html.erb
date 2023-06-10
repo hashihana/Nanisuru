@@ -1,11 +1,12 @@
 <div class="search-form">
   <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, value: keyword %>
+    <%= f.text_field :keyword ,value: params[:keyword] %>
     <%= f.submit "検索" %>
   <% end %>
 </div>
-<div class="spot-list">
-  <% spots.each do |spot| %>
-    <!--<%= spot.name %> title削除-->
-  <% end %>
-</div>
+
+<!--<div class="spot-list">-->
+<!--  <%# spots.each do |spot| %>-->
+    <!--<%#= spot.name %> title削除-->
+<!--  <%# end %>-->
+<!--</div>-->

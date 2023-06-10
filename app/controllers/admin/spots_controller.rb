@@ -18,7 +18,8 @@ class Admin::SpotsController < ApplicationController
    end
   
   def search
-    @spots = Spot.search(params[:keyword])
+    @spots = Spot.search(params[:keyword]).page(params[:page]).per(12)
+    @genres = Genre.only_active
     @keyword = params[:keyword]
     render "index"
   end

@@ -3,7 +3,7 @@ class Spot < ApplicationRecord
   has_many :reviews, dependent: :destroy
   belongs_to :genre
   def self.search(keyword)
-    where(["name like? OR address like?", "%#{keyword}%", "%#{keyword}%"])
+    where(["name like? OR address like? OR introduction like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   end
   
   scope :where_genre_active, -> { joins(:genre).where(genres: { is_active: true }) }
