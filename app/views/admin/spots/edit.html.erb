@@ -1,18 +1,19 @@
-<div class="inner">
+<div class="container">
+  <div class="row">
 	<h2 class="section-ttl"><%= @spot.name %>の編集</h2>
 	
 	 <%= form_with model: @spot, url: admin_spots_path(@spot) do |f| %>
 	<!--<%#= render 'layouts/error_messages', resource: item %>-->
 	<div class="flex">
-		<div>
-			<%= f.label :image, "画像" %>
 			<div class="image_field">
-				<%= image_tag (@spot.spot_image.attached? ? @spot.image : 'no_image.jpg'), id: "img_prev", class: "admin_spot_image" %>
+				<!--<%#= image_tag (@spot.spot_image.attached? ? @spot.image : 'no_image.jpg'), id: "img_prev", class: "admin_spot_image" %>-->
+				<%= image_tag @spot.get_spot_image(100, 100), class: "admin_spot_image" %></div>
+				
 				<span class="btn btn-file btn-info"><%= f.file_field :image,  accept:'image/*' %>画像選択</span>
 				<p>選択するとプレビューされます。<br>画像未選択のままだと、<br>「画像準備中」になります。</p>
 			</div>
 		</div>
-		<table class="admin_item_info item_form">
+		<table class="admin_spot_info spot_form">
 			<thead>
 				<tr>
 					<th></th>

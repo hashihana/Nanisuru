@@ -37,6 +37,7 @@ class Admin::SpotsController < ApplicationController
   end
 
   def edit
+    @spot = Spot.where_genre_active.find(params[:id])
   end
 
   def update
