@@ -22,6 +22,7 @@ class Admin::SpotsController < ApplicationController
     @keyword = params[:keyword]
     render "index"
   end
+  
   def create
     @spot = Spot.new(spot_params)
     @spot.save ? (redirect_to admin_spot_path(@spot)) : (render :new)

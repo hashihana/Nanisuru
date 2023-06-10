@@ -1,11 +1,15 @@
-<div class="wrapper flex">
-	<div class="sidebar">
-		<h3>ジャンル検索</h3>
-		<% @genres.each do |genre| %>
-		<%= link_to genre.name, admin_spots_path(genre_id: genre.id) %>
-		<% end %>
-	</div>
-	<div class="content">
+<div class="container wrapper flex">
+  <div class="row">
+    <div class="col-md-3">
+	<%= render 'admin/genres/genre_sidebar', genres: @genres %>
+	 </div>
+	<!--<div class="sidebar">-->
+	<!--	<h3>ジャンル検索</h3>-->
+	<!--	<%# @genres.each do |genre| %>-->
+	<!--	<%#= link_to genre.name, admin_spots_path(genre_id: genre.id) %>-->
+	<!--	<%# end %>-->
+	<!--</div>-->
+	<div class="content col-md-9">
 		<h2 class="section-ttl"><%= @spot.name %></h2>
 		<!--<%#= render 'layouts/error_messages', resource: @ %>-->
 		<div class="flex">
@@ -14,8 +18,8 @@
 
 				<p>ジャンル: <%= link_to @spot.genre.name, admin_spots_path(genre_id: @spot.genre_id) %></p>
 
-				<h4><%= @spot.address %></h4><br>
-				<h4><%= @spot.introduction %></h4><br>
+				<p><%= @spot.address %></p><br>
+				<p><%= @spot.introduction %></p><br>
 
 		 <!--<%# if logged_in? %>-->
    <!--     <%#= render 'favorites/like_button', spot: @spot %>-->
@@ -68,4 +72,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>

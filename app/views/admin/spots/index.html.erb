@@ -11,19 +11,19 @@
 	<!--		<%#= link_to genre.name, admin_spots_path(genre_id: genre.id) %>-->
 	<!--	<%# end %>-->
 	<!--</div>-->
-	<div class="content">
+	<div class="content col-md-9">
 		<%= render 'serach', {spots: @spots, keyword: @keyword} %>
 		<% if params[:genre_id] %>
-			<h4 class="section-ttl"><%= @genre.name %>のスポット (全<%= @all_spots_count %>件)</h4>
+			<p class="section-ttl"><%= @genre.name %>のスポット (全<%= @all_spots_count %>件)</p>
 		<% else %>
-			<h4 class="section-ttl">スポット (全<%= @all_spots_count %>件)</h4>
+			<p class="section-ttl">スポット (全<%= @all_spots_count %>件)</p>
 		<% end %>
 		<% if @spots.first %> 
 			<div class="spots">
 				<% @spots.each do |spot| %>
-					<%= link_to spot_path(spot) do %>
+					<%= link_to admin_spot_path(spot) do %>
 						<%= image_tag spot.get_spot_image(100,100), format: "jpeg", fallback: "no-image.png" %>
-						<h5><%= spot.genre.name %></h5>
+						<p><%= spot.genre.name %></p>
 						<p><%= spot.name %></p>
 					<% end %>
 				<% end %>
