@@ -17,11 +17,11 @@ class Public::ReviewsController < ApplicationController
   end
   
   def create
-    spot = Spot.find(params[:spotid])
+    spot = Spot.find(params[:spot_id])
     comment = current_customer.reviews.new(review_params)
-    comment.spote_id = spot.id
+    comment.spot_id = spot.id
     comment.save
-    redirect_to post_image_path(post_image)
+    redirect_to spot_path(spot)
   end
   
   # def create

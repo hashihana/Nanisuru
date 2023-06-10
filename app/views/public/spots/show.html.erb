@@ -14,8 +14,8 @@
 
 				<p>ジャンル: <%= link_to @spot.genre.name, admin_spots_path(genre_id: @spot.genre_id) %></p>
 
-				<h4><%= @spot.address %></h4><br>
-				<h4><%= @spot.introduction %></h4><br>
+				<p><%= @spot.address %></p><br>
+				<p><%= @spot.introduction %></p><br>
 
 		 <!--<%# if logged_in? %>-->
    <!--     <%#= render 'favorites/like_button', spot: @spot %>-->

@@ -4,8 +4,8 @@
       <tr>
 
         <td>
-          <%= link_to customer_path(review.user) do %>
-            <%= image_tag review.customer.get_profile_image, size: "100x100" %><br>
+          <%= link_to customer_path(review.customer) do %>
+            <%= image_tag review.customer.get_profile_image(100,100), class: "sprofile_image" %><br>
             <%= review.customer.nickname %>
             <%= review.created_at.strftime('%Y/%m/%d') %><%= review.comment %>
           <% end %>

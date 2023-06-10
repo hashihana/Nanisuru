@@ -9,25 +9,23 @@ devise_scope :customer do
   post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
 end
 
-
   namespace :admin do
     resources :spots do
       resources :reviews
     end
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :create, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     get "search" => "spots#search"
   end
   
 
 scope module: :public do
- 
     root 'homes#top'
     resources :spots do
     resources :reviews
   end
     get "search" => "spots#search"
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :create, :edit, :update]
 end
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

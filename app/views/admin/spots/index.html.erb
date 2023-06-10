@@ -14,9 +14,9 @@
 	<div class="content col-md-9">
 		<%= render 'serach', {spots: @spots, keyword: @keyword} %>
 		<% if params[:genre_id] %>
-			<p class="section-ttl"><%= @genre.name %>のスポット (全<%= @all_spots_count %>件)</p>
+			<h2 class="section-ttl"><%= @genre.name %>のスポット (全<%= @all_spots_count %>件)</h2>
 		<% else %>
-			<p class="section-ttl">スポット (全<%= @all_spots_count %>件)</p>
+			<h2 class="section-ttl">スポット (全<%= @all_spots_count %>件)</h2>
 		<% end %>
 		<% if @spots.first %> 
 			<div class="spots">
