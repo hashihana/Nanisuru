@@ -1,13 +1,15 @@
-<div class="inner">
+<div class="container">
 	<h2 class="section-ttl">会員一覧</h2>
-	
-	<table class="admin_customer_index has_border">
+	<div class="row">
+	<table class="table table-striped">
 	<thead>
+		<tr>
 		<th>会員ID</th>
 		<th>ニックネーム</th>
 		<th>メールアドレス</th>
 		<th>会員ステータス</th>
 		<th></th>
+		</tr>
 	</thead>
 	<tbody>
 		<% @customers.each do |customer| %>
@@ -17,7 +19,7 @@
 				<td><%= customer.email %></td>
 				<td>
 					<% if customer.is_active? %>
-						<span class="text-active">有効</span>	
+						<span class="text-active">有効</span>
 					<% else %>
 						<span class="text-invalid">退会済み</span>
 					<% end %>
@@ -27,6 +29,6 @@
 		<% end %>
 	</tbody>
 </table>
-	
+
 	<%= paginate @customers %>
 </div>
