@@ -1,6 +1,10 @@
-<div class="inner">
+<div class="container">
 	<h2 class="section-ttl"><%= @customer.nickname %>さんのページ</h2>
-	<table class="customer_info">
+	<div class="row">
+		<div class="col-md-7">
+		<div>
+  <div>
+	<table class="customer_info col-md-7">
 		<thead>
 			<th></th>
 			<th></th>
@@ -21,18 +25,28 @@
 				<td colspan="2"><%= @customer.email %></td>
 			</tr>
 			
+				<!--<td>会員ステータス</td>-->
+				<!--<td colspan="2">-->
+				<!-- <%# if @customer.is_deleted %>-->
+    <!--    <span class="bg-danger">退会済</span>-->
+    <!--      <%# else %>-->
+    <!--    <span class="bg-info">有効会員</span>-->
+    <!--      <%# end %>-->
+				<!--</td>-->
+				
+				<tr>
 				<td>会員ステータス</td>
 				<td colspan="2">
-				 <% if @customer.is_deleted %>
-        <span class="bg-danger">退会済</span>
-          <% else %>
-        <span class="bg-info">有効会員</span>
-          <% end %>
+					<% if @customer.is_active? %>
+						<span class="text-active">有効	</span>					
+					<% else %>
+						<span class="text-invalid">退会済み</span>
+					<% end %>
 				</td>
 			</tr>
 			<tr>
 				<td><%= link_to "編集", edit_admin_customer_path(@customer), class: "btn btn-success" %></td>
-				<td><%= link_to "レビュー一覧", admin_customer_reviews_path(@customer), class: "btn btn-primary" %></td>
+				<td><%= link_to "レビュー一覧", admin_spot_reviews_path(@customer), class: "btn btn-primary" %></td>
 			</tr>
 		</tbody>
 	</table>
