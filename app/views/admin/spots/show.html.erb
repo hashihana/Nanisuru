@@ -11,6 +11,7 @@
 	<!--</div>-->
 	<div class="content col-md-9">
 		<h2 class="section-ttl"><%= @spot.name %></h2>
+		<div><%= flash[:notice] %></div>
 		<!--<%#= render 'layouts/error_messages', resource: @ %>-->
 		<div class="flex">
 			<%= image_tag @spot.get_spot_image(100, 100), class: "admin_spot_image" %>

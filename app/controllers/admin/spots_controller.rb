@@ -41,7 +41,13 @@ class Admin::SpotsController < ApplicationController
   end
 
   def update
-    @spot.update(spot_params) ? (redirect_to admin_spot_path(@spot)) : (render :edit)
+    @spot = Spot.find(params[:id])
+    if @spot.update(spot_params)
+      flash[:notice] = "投稿の更新に成功しました"
+      redirect_to admin_spot_path(@spot)
+    else
+      render :edit
+    end
   end
 
   private

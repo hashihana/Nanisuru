@@ -2,7 +2,7 @@
 <div class="container">
 	<h2 class="section-ttl"><%= @spot.name %>の編集</h2>
 <div class="row justify-content-center">
-	 <%= form_with model: @spot, url: admin_spots_path(@spot) do |f| %>
+	 <%= form_with model: @spot, url: admin_spot_path(@spot) do |f| %>
 	<!--<%#= render 'layouts/error_messages', resource: item %>-->
 	<div class="col-md-12">
 			<div class="image_field">
