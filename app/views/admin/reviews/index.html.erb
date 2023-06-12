@@ -1,12 +1,13 @@
 <div class="inner">
 	<h2 class="section-ttl">
-		<% if params[:customer_id] %>
-			<%= @customer.nickname %>さんの注文履歴一覧
-		<% elsif params[:created_at] == "today" %>
-			本日のレビュー一覧
-		<% else %>
-			本日のレビュー
-		<% end %>
+		<%# if params[:customer_id] %>
+		<h2>
+		<%#= @reviews.customer.nickname %>さんの注文履歴一覧</h2>
+		<!--<%# elsif params[:created_at] == "today" %>-->
+		<!--	本日のレビュー一覧-->
+		<%# else %>
+			<!--対象レビューなし-->
+		<%# end %>
 	</h2>
 	<table class="admin_reviews has_border">
 		<thead>
