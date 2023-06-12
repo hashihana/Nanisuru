@@ -19,9 +19,13 @@
 		<tbody>
 			<% @reviews.each do |review| %>
 				<tr>
-					<td><%= link_to review.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_review_path(review), class: "underline" %></td>
-					<td><%= link_to review.customer.nickname, admin_customer_path(review.customer) %></td>
-					<td><%= link_to review.comment, admin_spot_review_path(review) %></td>
+					<td><%= review.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+					<td>
+						<% if review.customer.present? %>
+						  <%= link_to review.customer.nickname, admin_customer_path(review.customer) %>
+						<% end %>  
+					</td>
+					<td><%= review.comment %></td>
 				</tr>
 			<% end %>
 		</tbody>
