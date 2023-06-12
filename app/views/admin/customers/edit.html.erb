@@ -1,5 +1,9 @@
-<div class="inner">
+<div class="container">
 	<h2 class="section-ttl"><%= @customer.nickname %> さんの会員情報編集</h2>
+	<div class="row">
+			<div class="col-md-7">
+		<div>
+			
 	<%= form_with model:@customer, url: admin_customer_path(@customer) do |f| %>
 		<%= render 'layouts/error_messages', resource: @customer %>
 		<table class="customer_info customer_form">
