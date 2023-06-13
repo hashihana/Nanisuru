@@ -33,6 +33,7 @@
  
         <!--<%#= render "admin/reviews/index", spot: @spot %>-->
          <%= render "public/reviews/list", spot: @spot, review: @review %>
+         <%= render partial: "admin/spots/show_rate", locals: { spot: @spot } %>
       </div>
 
       <!--口コミ投稿フォーム-->

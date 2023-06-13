@@ -39,6 +39,8 @@ class Public::ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:comment)
+      params.require(:review).permit(:comment, :all_rating, :rating1, :rating2, :rating3, :rating4).merge(
+         customer_id: current_customer.id, spot_id: params[:spot_id]
+    )
     end
 end

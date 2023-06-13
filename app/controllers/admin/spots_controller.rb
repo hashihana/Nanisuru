@@ -15,6 +15,13 @@ class Admin::SpotsController < ApplicationController
     end
     @spots = all_spots.page(params[:page]).per(12)
     @all_spots_count = all_spots.count
+
+    @reviews = Review.all
+    @all_rating = '総合評価'
+    @rating1 = '評価1'
+    @rating2 = '評価2'
+    @rating3 = '評価3'
+    @rating4 = '評価4'
    end
   
   def search
@@ -33,6 +40,7 @@ class Admin::SpotsController < ApplicationController
     @spot = Spot.where_genre_active.find(params[:id])
     @review = Review.new
     @genres = Genre.only_active
+    @reviews = Review.all
     # @reviews = Reviews.all
   end
 

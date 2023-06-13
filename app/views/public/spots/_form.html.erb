@@ -1,0 +1,10 @@
+
+<%=@all_rating %>：<%= @reviews.average(:all_rating).to_f.round(1) %>
+
+ <div class="average-review-rating" data-score=<%= @reviews.average(:all_rating) %>></div> 
+
+<th class="table__col1">総合評価</th>
+ <td class="table__col1">  <div class="field" id="star"><% f.label :all_rating %></div></td>
+</tr>
+
+<%= render partial: "public/spots/form_rate", locals: { spot: @spot } %>
