@@ -1,10 +1,10 @@
 class Review < ApplicationRecord
-  
+
     belongs_to :customer
     belongs_to :spot
-    
+
     scope :reviewed_today, -> { where(created_at: Time.current.at_beginning_of_day..Time.current.at_end_of_day) }
-    
+
     validates :all_rating, numericality: {
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 1}, presence: true

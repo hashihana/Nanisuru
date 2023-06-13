@@ -8,13 +8,28 @@
         <th></th>
         </thead>
       <tbody>
-        
+
         <td>
           <%= review.customer.nickname %>
           <%= review.created_at.strftime('%Y/%m/%d') %></br>
           <%= link_to customer_path(review.customer) do %>
             <%= image_tag review.customer.get_profile_image(60,60), class: "sprofile_image" %></br>
             <% end %>
+        </td>
+        <td id="review-<%= review.id %>">
+          <script>
+            var elem = document.getElementById("review-<%= review.id %>");
+            var opt = {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              scoreName: 'review[all_rating]',
+              half: true,
+              readOnly: true,
+              score: <%= review.all_rating %>
+              };
+              raty(elem,opt);
+          </script>
         </td>
         <td><%= review.comment %></td>
         <td>

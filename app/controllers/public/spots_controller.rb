@@ -3,6 +3,7 @@ class Public::SpotsController < ApplicationController
   def show
     @spot = Spot.where_genre_active.find(params[:id])
     @review = Review.new
+    @reviews = Review.all
     @genres = Genre.only_active
     # @reviews = Reviews.all
   end

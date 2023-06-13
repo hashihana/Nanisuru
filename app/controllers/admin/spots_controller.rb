@@ -40,7 +40,7 @@ class Admin::SpotsController < ApplicationController
     @spot = Spot.where_genre_active.find(params[:id])
     @review = Review.new
     @genres = Genre.only_active
-    @reviews = Review.all
+    @reviews = Review.all #評価機能の為、
     # @reviews = Reviews.all
   end
 

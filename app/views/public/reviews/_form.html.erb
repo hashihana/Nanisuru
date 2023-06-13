@@ -1,4 +1,24 @@
 <%= form_with(model: @review, url: spot_reviews_path(spot.id), local: false) do |f| %>
+
+  <%=@all_rating %>：<%= @reviews.average(:all_rating).to_f.round(1) %>
+  <div data-score=<%= @reviews.average(:all_rating) %>></div>
+  <div>総合評価</div>
+  <div class="position-static">
+    <div id="star">
+      <% f.label :all_rating %>
+    </div>
+  </div>
   <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: "w-100 comment-textarea" %>
   <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
 <% end %>
+ <script>
+    var elem = document.getElementById('star');
+    var opt = {
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      scoreName: 'review[all_rating]',
+      half: true,
+      };
+      raty(elem,opt);
+  </script>
