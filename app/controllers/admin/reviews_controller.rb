@@ -21,16 +21,8 @@ class Admin::ReviewsController < ApplicationController
 
   def index
 
-  #   if params[:customer_id]
-  #     @customer = Customer.find(params[:customer_id])
-  #     @reviews = @customer.reviews.page(params[:page])
-  #   elsif params[:created_at] == "today"
-  #     @reviews = Review.reviewed_today.includes(:customer).page(params[:page])
-  #   else
       @customer = Customer.find(params[:customer_id])
-      @reviews = Review.all
-      # @reviews = Review.includes(:customer).page(params[:page])
-  #   end
+      @reviews = Review.where(customer_id: @customer.id).page(params[:page])
   end
 
   # def create
@@ -44,12 +36,6 @@ class Admin::ReviewsController < ApplicationController
     @comment = Review.find_by(id: params[:id], spot_id: params[:spot_id])
     @comment.destroy
   end
-  
-  #   def review_params
-  #   params.require(:review).permit(:comment, :all_rating, :rating1, :rating2, :rating3, :rating4).merge(
-  #     user_id: current_user.id, item_id: params[:item_id]
-  #   )
-  # end
 
   private
 

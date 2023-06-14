@@ -1,19 +1,10 @@
-<div class="inner">
-	<h2 class="section-ttl">
-		
-		<%# if params[:customer_id] %>
+<div class="container wrapper flex">
+ <div class="row">
 		<h2><%= @customer.nickname %>さんの注文履歴一覧</h2>
-		<!--<%# elsif params[:created_at] == "today" %>-->
-		<!--	本日のレビュー一覧-->
-		<%# else %>
-			<!--対象レビューなし-->
-		<%# end %>
-	</h2>
-	<table class="admin_reviews has_border">
+	<table class="table">
 		<thead>
 			<tr>
 				<th>レビュー日</th>
-				<th>レビュー者</th></th>
 				<th>レビュー詳細</th>
 			</tr>
 		</thead>
@@ -21,15 +12,16 @@
 			<% @reviews.each do |review| %>
 				<tr>
 					<td><%= review.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
-					<td>
-						<% if review.customer.present? %>
-						  <%= link_to review.customer.nickname, admin_customer_path(review.customer) %>
-						<% end %>  
-					</td>
+					<!--<td>-->
+					<!--	<%# if review.customer.present? %>-->
+					<!--	  <%#= link_to review.customer.nickname, admin_customer_path(review.customer) %>-->
+					<!--	<%# end %>-->
+					<!--</td>-->
 					<td><%= review.comment %></td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
+	</div>
 	</div>
 	<%= paginate @reviews %>

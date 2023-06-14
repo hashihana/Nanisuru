@@ -13,11 +13,13 @@ end
     resources :spots do
       resources :reviews
     end
-    resources :customers, only: [:index, :show, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :create, :edit, :update] do
+      resources :reviews
+    end
     resources :genres, only: [:index, :create, :edit, :update]
     get "search" => "spots#search"
   end
-  
+
 
 scope module: :public do
     root 'homes#top'
