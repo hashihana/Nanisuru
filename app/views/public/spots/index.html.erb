@@ -19,6 +19,9 @@
 						<%= image_tag spot.get_spot_image(100, 100), format: "jpeg", fallback: "no-image.png" %>
 						<h5><%= spot.genre.name %></h5>
 						<p><%= spot.name %></p>
+						<div class="average-review-rating" data-score=<%= spot.reviews.average(:all_rating) %>></div>
+　							<%=@all_rating %>：<%= spot.reviews.average(:all_rating).to_f.round(1) %>
+						</div>
 					<% end %>
 				<% end %>
 			</div>

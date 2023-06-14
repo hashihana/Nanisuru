@@ -25,6 +25,8 @@
    
      <!--口コミ-->
      <h5>カスタマーレビュー</h5>
+          <div class="average-review-rating" data-score=<%= @spot.reviews.average(:all_rating) %>></div>
+　					<p>総合評価：<%= @spot.reviews.average(:all_rating).to_f.round(1) %></p>
          <%= render "public/reviews/list", spot: @spot, review: @review %>
          <%#= render partial: "admin/spots/show_rate", locals: { spot: @spot } %>
       </div>
