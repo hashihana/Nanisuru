@@ -14,7 +14,7 @@ end
       resources :reviews
     end
     resources :customers, only: [:index, :show, :create, :edit, :update] do
-      resources :reviews
+        resources :reviews
     end
     resources :genres, only: [:index, :create, :edit, :update]
     get "search" => "spots#search"

@@ -20,9 +20,9 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def index
-
       @customer = Customer.find(params[:customer_id])
       @reviews = Review.where(customer_id: @customer.id).page(params[:page])
+      @spot = Spot.find(params[:spot_id])
   end
 
   # def create
@@ -35,6 +35,7 @@ class Admin::ReviewsController < ApplicationController
   def destroy
     @comment = Review.find_by(id: params[:id], spot_id: params[:spot_id])
     @comment.destroy
+    redirect_to admin_customer_reviews_path(@customer)
   end
 
   private

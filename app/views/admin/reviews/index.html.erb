@@ -5,6 +5,7 @@
 		<thead>
 			<tr>
 				<th>レビュー日</th>
+				<th>スポット</th>
 				<th>レビュー詳細</th>
 			</tr>
 		</thead>
@@ -17,8 +18,11 @@
 					<!--	  <%#= link_to review.customer.nickname, admin_customer_path(review.customer) %>-->
 					<!--	<%# end %>-->
 					<!--</td>-->
+					<td><%= link_to review.@spot.name, admin_spot_path(@spot) %>
+					<p><%= review.@spot.name %></p></td>
 					<td><%= review.comment %></td>
-				</tr>
+				<!--	<td><%#= link_to "削除", spot_review_path(@spot, @review), method: :delete, class: "btn btn-danger pull-right", remote: true %></td>-->
+				<!--</tr>-->
 			<% end %>
 		</tbody>
 	</table>

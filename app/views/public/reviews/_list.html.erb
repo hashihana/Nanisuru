@@ -33,9 +33,9 @@
           </br>
         <%= review.comment %></td>
         <td>
-          <%# if review.user == current_user %>
+          <% if review.customer == current_customer %>
             <%= link_to "削除", spot_review_path(spot, review), method: :delete, class: "btn btn-danger pull-right", remote: true %>
-          <%# end %>
+          <% end %>
         </td>
       </tr>
       <% end %>
