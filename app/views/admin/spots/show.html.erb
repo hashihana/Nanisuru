@@ -3,12 +3,7 @@
     <div class="col-md-3">
 	<%= render 'admin/genres/genre_sidebar', genres: @genres %>
 	 </div>
-	<!--<div class="sidebar">-->
-	<!--	<h3>ジャンル検索</h3>-->
-	<!--	<%# @genres.each do |genre| %>-->
-	<!--	<%#= link_to genre.name, admin_spots_path(genre_id: genre.id) %>-->
-	<!--	<%# end %>-->
-	<!--</div>-->
+	
 	<div class="content col-md-9">
 		<h2 class="section-ttl"><%= @spot.name %></h2>
 		<div><%= flash[:notice] %></div>
@@ -30,10 +25,8 @@
    
      <!--口コミ-->
      <h5>カスタマーレビュー</h5>
- 
-        <!--<%#= render "admin/reviews/index", spot: @spot %>-->
          <%= render "public/reviews/list", spot: @spot, review: @review %>
-         <%= render partial: "admin/spots/show_rate", locals: { spot: @spot } %>
+         <%#= render partial: "admin/spots/show_rate", locals: { spot: @spot } %>
       </div>
 
       <!--口コミ投稿フォーム-->
