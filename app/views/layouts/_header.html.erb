@@ -1,10 +1,10 @@
 <header>
    <div class="container">
     <div class="row">
-
+          
         <ul class="navbar navbar-expand-lg navbar-nav ml-auto">
           <% if customer_signed_in? %>
-
+          
            <li class="customer-name">
             ようこそ、<%= current_customer.nickname %>さん！
            </li>
@@ -27,7 +27,6 @@
           <% end %>
           	<%= render 'admin/spots/serach' %>
         </ul>
-     </nav>
     </div>
   </div>
  </header>

@@ -4,6 +4,9 @@ devise_for :customers, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+}
 
 devise_scope :customer do
   post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
@@ -30,8 +33,6 @@ scope module: :public do
     resources :customers, only: [:index, :show, :create, :edit, :update]
 end
 
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end

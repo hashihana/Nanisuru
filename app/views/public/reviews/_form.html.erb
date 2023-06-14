@@ -1,8 +1,8 @@
 <%= form_with(model: @review, url: spot_reviews_path(spot.id), local: false) do |f| %>
 
-  <%=@all_rating %>：<%= @reviews.average(:all_rating).to_f.round(1) %>
+  <%#=@all_rating %><p>総合評価：<%= @reviews.average(:all_rating).to_f.round(1) %></p>
   <div data-score=<%= @reviews.average(:all_rating) %>></div>
-  <div>総合評価</div>
+  <!--<div>総合評価</div>-->
   <div class="position-static">
     <div id="star">
       <% f.label :all_rating %>

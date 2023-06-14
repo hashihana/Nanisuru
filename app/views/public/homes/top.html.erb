@@ -1,26 +1,27 @@
-<div class="wrapper flex">
-	<div class="sidebar">
-		<h3>ジャンル一覧</h3>
-		<div><%= flash[:notice] %></div>
-		<% @genres.each do |genre| %>
-			<%= link_to genre.name, spots_path(genre_id: genre.id) %>
-		<% end %>
-	</div>
+<div class="container wrapper flex">
+ <div class="row">
+	<!--<div class="sidebar">-->
+	<!--	<h3>ジャンル一覧</h3>-->
+	<!--	<div><%#= flash[:notice] %></div>-->
+	<!--	<%# @genres.each do |genre| %>-->
+	<!--		<%#= link_to genre.name, spots_path(genre_id: genre.id) %>-->
+	<!--	<%# end %>-->
+	<!--</div>-->
 	<div class="content">
-		<div class="top-box">
-		
+		<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
 		<%= image_tag 'nanisuru.jpeg', size: '700x380' %>
 		</div>
 		<!--<div><%#= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %></div>-->
-		<h2 class="section-ttl">おすすめスポット</h2>
+	<h2 class="section-ttl">おすすめスポット</h2>
 		<div class="items">
 			<% @random.each do |spot| %>
 				<%= link_to spot_path(spot) do %>
 					<%= image_tag spot.get_spot_image(180,130) %>
-					<h5><%= spot.genre.name %></h5>
-				<p><%= spot.name %></p>
-				<% end %>
+						<h5><%= spot.name %></h5>
+					<!--<p><%#= spot.genre.name %></p>-->
+					<% end %>
 			<% end %>
 		</div>
 	</div>
+</div>
 </div>

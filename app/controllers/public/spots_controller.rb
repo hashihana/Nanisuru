@@ -6,6 +6,7 @@ class Public::SpotsController < ApplicationController
     @reviews = Review.all
     @genres = Genre.only_active
     # @reviews = Reviews.all
+    
   end
   
   def index
