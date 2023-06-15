@@ -3,24 +3,19 @@
 		<h2><%= @customer.nickname %>さんのレビュー履歴一覧</h2>
 	<table class="table">
 		<thead>
-			<tr>
-				<th>レビュー日</th>
+		  <tr>
+			  <th>レビュー日</th>
 				<th>スポット</th>
 				<th>評価</th>
 				<th>レビュー詳細</th>
 				<th>削除</th>
 			</tr>
 		</thead>
-		<tbody>
-			<% @reviews.each do |review| %>
+	<tbody>
+	  	<% @reviews.each do |review| %>
 				<tr>
 					<td><%= review.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
-					<!--<td>-->
-					<!--	<%# if review.customer.present? %>-->
-					<!--	  <%#= link_to review.customer.nickname, admin_customer_path(review.customer) %>-->
-					<!--	<%# end %>-->
-					<!--</td>-->
-					<td><%= link_to review.spot.name, admin_spot_path(review.spot) %></td>
+					<td><%= link_to review.spot.name, spot_path(review.spot) %></td>
 				<td id="review-<%= review.id %>">
           <script>
             var elem = document.getElementById("review-<%= review.id %>");
@@ -38,15 +33,11 @@
         </td>
 					<td><%= review.comment %></td>
 				
-					<td>
-						<% if review.customer == current_customer %>
-            	<%= link_to "削除", spot_review_path(spot, review), method: :delete, class: "btn btn-danger pull-right", remote: true %>
-         		<% end %>
-          </td>
+					<td><%= link_to "削除", admin_customer_review_path(@customer, review), method: :delete, class: "btn btn-danger pull-right" %></td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
 	</div>
-</div>
+	</div>
 	<%= paginate @reviews %>

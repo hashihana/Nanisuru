@@ -5,7 +5,9 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @spot = Spot.find(params[:id])
+    @customers = Customer.all #whereに直す
+    @reviews = Review.where(customer_id: @customer.id).page(params[:page])
+    # @spot = Spot.find(params[:id])
     @review = Review.new
   end
 

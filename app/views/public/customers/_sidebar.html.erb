@@ -1,0 +1,18 @@
+<table class="customer-tabel table table-bordered table-hover">
+<thead class="customer-thead">
+<tr>
+<th class="customer">ユーザー情報</th>
+</tr>
+</thead>
+
+<tbody>
+<% customers.each do |customer| %>
+<tr>
+<td>
+<%= image_tag customer.get_profile_image(60,60), class: "rounded-circle" %></br>
+<%= customer.nickname %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
