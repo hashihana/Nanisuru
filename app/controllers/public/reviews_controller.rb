@@ -18,8 +18,9 @@ class Public::ReviewsController < ApplicationController
   
   def create
     spot = Spot.find(params[:spot_id])
-    comment = current_customer.reviews.new(review_params)
-    comment.spot_id = spot.id
+    comment = Review.new(review_params)
+    #comment.spot_id = spot.id
+    byebug
     comment.save
     redirect_to spot_path(spot)
   end
