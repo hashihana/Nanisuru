@@ -32,8 +32,10 @@ class Public::ReviewsController < ApplicationController
   # end
 
   def destroy
-    @comment = Review.find_by(id: params[:id], spot_id: params[:spot_id])
+    @customer = Customer.find(params[:customer_id])
+    @comment = Review.find_by(params[:id])
     @comment.destroy
+    redirect_to customer_path(@customer)
   end
 
   private

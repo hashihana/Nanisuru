@@ -16,7 +16,7 @@ end
     resources :spots do
       resources :reviews
     end
-    resources :customers, only: [:index, :show, :create, :edit, :update] do
+    resources :customers do #, only: [:index, :show, :create, :edit, :update] 
         resources :reviews
     end
     resources :genres, only: [:index, :create, :edit, :update]
@@ -25,12 +25,15 @@ end
 
 
 scope module: :public do
+  
     root 'homes#top'
     resources :spots do
     resources :reviews
   end
     get "search" => "spots#search"
-    resources :customers, only: [:index, :show, :create, :edit, :update]
+    resources :customers do #, only: [:index, :show, :create, :edit, :update]
+    resources :reviews, only: [:destroy]
+  end
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

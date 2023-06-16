@@ -1,6 +1,6 @@
 <div class="inner">
 	<h2 class="section-ttl">会員情報編集</h2>
-	<%= form_with model:@customer, url: update_customer_path do |f| %>
+	<%= form_with model:@customer, url: edit_customer_path do |f| %>
 		<!--<%#= render 'layouts/error_messages', resource: @customer %>-->
 		<div class="row field">
 		<%= f.label :"ニックネーム", class: "col-lg-2" %>
