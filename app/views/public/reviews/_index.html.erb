@@ -1,5 +1,4 @@
-<div class="container wrapper flex">
- <div class="row">
+<table class="customer_review">
 		<h2><%= @customer.nickname %>さんのレビュー履歴一覧</h2>
 	<table class="table">
 		<thead>
@@ -39,5 +38,5 @@
 		</tbody>
 	</table>
 	</div>
-	</div>
+	</table>
 	<%= paginate @reviews %>

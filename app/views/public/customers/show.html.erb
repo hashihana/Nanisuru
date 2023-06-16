@@ -1,33 +1,31 @@
-<div class="container px-5 px-sm-0">
+<div class="container wrapper flex">
+		<h2 class="section-ttl">マイページ</h2>
   <div class="row">
 	 <% if flash[:notice] %>
     <p class="text-active"><%= flash[:notice] %></p>
   	<% end %>
   	
   	<div class="col-md-3">
-				<%= render 'public/customers/sidebar', customers: @customers %>
-		</div>
-	
-<h2 class="section-ttl">マイページ</h2>
+		<%= render 'public/customers/sidebar', customers: @customers %>
+	</div>
 
-  	<div class="content col-md-9">
-			<h2 class="section-ttl">レビュー履歴<h2>
-			<%= render 'public/reviews/index', reviews: @reviews %>
-		</div>
+<div class="col-md-6">
+<h2>お気に入り</h2>
+</div>
 
 	<div class="row">
-		<h2>お気に入り</h2>
+  	<div class="content">
+			<%= render 'public/reviews/index', reviews: @reviews %>
+		</div>
 	</div>
+
 		<!--<%# @customer.each do |customer| %>-->
 		<!--<p><%#= image_tag customer.get_profile_image(100,100), class:"rounded-circle";  %></p>-->
 		<!--<h5 class="profile-name display-4"><%#= customer.nickname %></h5>-->
 		<!--<%# end %>-->
-			<%= link_to "編集する", edit_customer_path, class: "btn btn-success ml2" %>
-			<%= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-success ml2" %>
-
-	
+		
 	<!--<div class="flex">-->
 	<!--	<%#= link_to "「行きたい」を見る", favorite_path, class: "btn btn-primary" %>-->
 	<!--</div>-->
-		</div>
+	</div>
 </div>

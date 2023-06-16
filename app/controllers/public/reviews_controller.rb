@@ -20,7 +20,6 @@ class Public::ReviewsController < ApplicationController
     spot = Spot.find(params[:spot_id])
     comment = Review.new(review_params)
     #comment.spot_id = spot.id
-    byebug
     comment.save
     redirect_to spot_path(spot)
   end
