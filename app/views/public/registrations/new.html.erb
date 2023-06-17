@@ -30,6 +30,7 @@
           <td><%= f.label :password_confirmation, "パスワード(確認用)" %></td>
           <td colspan="2"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
         </tr>
+        </tbody>
       </table>
 
      <div class="text-center">
@@ -37,6 +38,6 @@
      </div>
      <% end %>
   
-     <h6class="text-left">既に登録済みの方</h6>
+     <h6 class="text-left">既に登録済みの方</h6>
       <p><%= link_to "こちら", new_customer_session_path, class: "underline" %>からログインしてください。</p>
 </div>

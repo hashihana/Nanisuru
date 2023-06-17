@@ -12,12 +12,27 @@ class Admin::ReviewsController < ApplicationController
       #@spot = Spot.find(params[:spot_id])
   end
 
-  def destroy
-    @customer = Customer.find(params[:customer_id])
-    @comment = Review.find_by(params[:id])
+  # def destroy
+  #   @customer = Customer.find(params[:customer_id])
+  #   @comment = Review.find_by(params[:id])
+  #   @comment.destroy
+  #   redirect_to admin_customer_reviews_path(@customer)
+  # end
+
+def destroy
+    unless params[:customer_id].nil?
+      @customer = Customer.find(params[:customer_id])
+    else
+      @spot = Spot.find(params[:spot_id])
+    end
+    @comment = Review.find(params[:id])
     @comment.destroy
-    redirect_to admin_customer_reviews_path(@customer)
-  end
+    if @spot.nil?
+      redirect_to admin_customer_path(@customer)
+    else
+      redirect_to admin_spot_path(@spot)
+    end
+end
 
   private
 

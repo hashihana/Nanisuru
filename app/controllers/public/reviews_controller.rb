@@ -1,10 +1,10 @@
 class Public::ReviewsController < ApplicationController
-  
+
   def show
      @spot = Spot.find(params[:id])
      @review = Review.new
   end
-  
+
   def index
     if params[:customer_id]
       @customer = Customer.find(params[:customer_id])
@@ -15,7 +15,7 @@ class Public::ReviewsController < ApplicationController
       @reviews = Review.includes(:customer).page(params[:page])
     end
   end
-  
+
   def create
     spot = Spot.find(params[:spot_id])
     comment = Review.new(review_params)
@@ -23,7 +23,7 @@ class Public::ReviewsController < ApplicationController
     comment.save
     redirect_to spot_path(spot)
   end
-  
+
   # def create
   #   spot = Spot.find(params[:spot_id])
   #   @comment = current_customer.reviews.new(review_params)
@@ -32,10 +32,18 @@ class Public::ReviewsController < ApplicationController
   # end
 
   def destroy
-    @customer = Customer.find(params[:customer_id])
-    @comment = Review.find_by(params[:id])
+    unless params[:customer_id].nil?
+      @customer = Customer.find(params[:customer_id])
+    else
+      @spot = Spot.find(params[:spot_id])
+    end
+    @comment = Review.find(params[:id])
     @comment.destroy
-    redirect_to customer_path(@customer)
+    if @spot.nil?
+      redirect_to customer_path(@customer)
+    else
+      redirect_to spot_path(@spot)
+    end
   end
 
   private

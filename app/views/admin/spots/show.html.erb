@@ -3,7 +3,7 @@
     <div class="col-md-3">
 	<%= render 'admin/genres/genre_sidebar', genres: @genres %>
 	 </div>
-	
+
 	<div class="content col-md-9">
 		<h2 class="section-ttl"><%= @spot.name %></h2>
 		<div><%= flash[:notice] %></div>
@@ -15,19 +15,19 @@
 				<p>ジャンル: <%= link_to @spot.genre.name, admin_spots_path(genre_id: @spot.genre_id) %></p>
 				<p><%= @spot.address %></p><br>
 				<p><%= @spot.introduction %></p><br>
-				
+
 	<div class="text-right">
      <%= link_to "編集する",edit_admin_spot_path(@spot.id), class:"btn btn-primary" %>
      </div>
 
 		 <!--<%# if logged_in? %>-->
    <!--     <%#= render 'favorites/like_button', spot: @spot %>-->
-   
+
      <!--口コミ-->
      <h5>カスタマーレビュー</h5>
           <div class="average-review-rating" data-score=<%= @spot.reviews.average(:all_rating) %>></div>
 　					<p>総合評価：<%= @spot.reviews.average(:all_rating).to_f.round(1) %></p>
-         <%= render "public/reviews/list", spot: @spot, review: @review %>
+         <%= render "admin/reviews/list", spot: @spot, review: @review %>
          <%#= render partial: "admin/spots/show_rate", locals: { spot: @spot } %>
       </div>
 

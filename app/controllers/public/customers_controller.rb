@@ -5,12 +5,13 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @reviews = Review.where(customer_id: @customer.id).page(params[:page]).per(10)
+    @reviews = Review.where(customer_id: @customer.id).page(params[:page]).per(10).reverse_order
     # @spot = Spot.find(params[:id])
     @review = Review.new
   end
 
   def edit
+    @customer = Customer.find(params[:id])
   end
 
   def update

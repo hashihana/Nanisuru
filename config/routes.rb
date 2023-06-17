@@ -16,7 +16,7 @@ end
     resources :spots do
       resources :reviews
     end
-    resources :customers do #, only: [:index, :show, :create, :edit, :update] 
+    resources :customers do #, only: [:index, :show, :create, :edit, :update]
         resources :reviews
     end
     resources :genres, only: [:index, :create, :edit, :update]
@@ -25,7 +25,7 @@ end
 
 
 scope module: :public do
-  
+
     root 'homes#top'
     resources :spots do
     resources :reviews
@@ -34,7 +34,7 @@ scope module: :public do
     resources :customers do #, only: [:index, :show, :create, :edit, :update]
     resources :reviews, only: [:destroy]
   end
-  
+
   resources :customers do
    member do
        get 'confirm_withdraw'
