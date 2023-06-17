@@ -5,7 +5,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @reviews = Review.where(customer_id: @customer.id).page(params[:page])
+    @reviews = Review.where(customer_id: @customer.id).page(params[:page]).per(10)
     # @spot = Spot.find(params[:id])
     @review = Review.new
   end

@@ -34,8 +34,14 @@ scope module: :public do
     resources :customers do #, only: [:index, :show, :create, :edit, :update]
     resources :reviews, only: [:destroy]
   end
-end
+  
+  resources :customers do
+   member do
+       get 'confirm_withdraw'
+       patch 'withdraw'
+     end
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
+end
 end
