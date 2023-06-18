@@ -8,7 +8,7 @@ class Admin::ReviewsController < ApplicationController
 
   def index
       @customer = Customer.find(params[:customer_id])
-      @reviews = Review.where(customer_id: @customer.id).page(params[:page])
+      @reviews = Review.where(customer_id: @customer.id).page(params[:page]).per(10).reverse_order
       #@spot = Spot.find(params[:spot_id])
   end
 
