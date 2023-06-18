@@ -61,3 +61,5 @@ gem 'kaminari','~> 1.2.1'
 gem 'bootstrap4-kaminari-views'
 
 gem 'ransack'
+
+gem 'jp_prefecture'

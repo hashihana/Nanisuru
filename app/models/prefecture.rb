@@ -1,2 +1,3 @@
 class Prefecture < ApplicationRecord
+  
 end
