@@ -28,7 +28,7 @@ def destroy
     @comment = Review.find(params[:id])
     @comment.destroy
     if @spot.nil?
-      redirect_to admin_customer_path(@customer)
+      redirect_to admin_customer_reviews_path(@customer)
     else
       redirect_to admin_spot_path(@spot)
     end
