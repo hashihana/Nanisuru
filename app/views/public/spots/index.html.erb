@@ -1,13 +1,13 @@
 <div class="container wrapper flex">
   <div class="row">
-  	<div class="col-md-3">
-		<%= render 'admin/spots/search_sidebar', genres: @genres %>
+  	<div class="col-md-3 border rounded">
+		<%= render 'public/spots/search_sidebar', genres: @genres %>
   	</div>
 	<div class="content">
-		<% if params[:genre_id] %>
-			<h2 class="section-ttl"><%= @genre.name %>の商品一覧 (全<%= @all_spots_count %>件)</h2>
+		<% if @genre.present? %>
+			<h2 class="section-ttl">ジャンル：<%= @genre.name %> (全<%= @all_spots_count %>件)</h2>
 		<% else %>
-			<h2 class="section-ttl">商品一覧 (全<%= @all_spots_count %>件)</h2>
+			<h2 class="section-ttl">スポット(全<%= @all_spots_count %>件)</h2>
 		<% end %>
 		<% if @spots.first %>
 		<div class="spots">

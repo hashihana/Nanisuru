@@ -1,8 +1,6 @@
-<!--<div class="wrapper flex">-->
-	
-	<div class="container wrapper flex">
-  <div class="row">
-    <div class="col-md-3">
+<div class="container wrapper flex">
+<div class="row">
+    <div class="col-md-3 border rounded">
 	<%= render 'admin/spots/search_sidebar', genres: @genres %>
 	
 	 </div>
@@ -13,9 +11,8 @@
 	<!--	<%# end %>-->
 	<!--</div>-->
 	<div class="content col-md-9">
-		<%= render 'serach', {spots: @spots, keyword: @keyword} %>
 		<% if @genre.present? %>
-			<h2 class="section-ttl"><%= @genre.name %>のスポット (全<%= @all_spots_count %>件)</h2>
+			<h2 class="section-ttl">ジャンル：<%= @genre.name %> (全<%= @all_spots_count %>件)</h2>
 		<% else %>
 			<h2 class="section-ttl">スポット (全<%= @all_spots_count %>件)</h2>
 		<% end %>

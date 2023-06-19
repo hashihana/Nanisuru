@@ -1,14 +1,8 @@
   <div class="container wrapper flex">
   <div class="row">
-    <div class="col-md-3">
-	<%= render 'admin/genres/genre_sidebar', genres: @genres %>
+    <div class="col-md-3 border rounded">
+	<%= render 'public/spots/search_sidebar', genres: @genres %>
 	 </div>
-	<!--<div class="sidebar">-->
-	<!--	<h3>ジャンル検索</h3>-->
-	<!--	<%# @genres.each do |genre| %>-->
-	<!--	<%#= link_to genre.name, admin_spots_path(genre_id: genre.id) %>-->
-	<!--	<%# end %>-->
-	<!--</div>-->
 	<div class="content col-md-9">
 		<h2 class="section-ttl"><%= @spot.name %></h2>
 		<!--<%#= render 'layouts/error_messages', resource: @ %>-->
@@ -23,7 +17,7 @@
 
 		 <!--<%# if logged_in? %>-->
    <!--     <%#= render 'favorites/like_button', spot: @spot %>-->
-   
+
      <!--口コミ-->
      <h5>「行った」レビュー</h5>
        <div class="reviews-form">
