@@ -9,6 +9,7 @@ class Spot < ApplicationRecord
   scope :where_genre_active, -> { joins(:genre).where(genres: { is_active: true }) }
   
   has_one_attached :spot_image
+  belongs_to :prefecture
   
   def get_spot_image(width, height)
   unless spot_image.attached?

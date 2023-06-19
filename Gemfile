@@ -63,3 +63,5 @@ gem 'bootstrap4-kaminari-views'
 gem 'ransack'
 
 gem 'jp_prefecture'
+
+gem 'seed-fu'

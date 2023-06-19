@@ -1,0 +1,17 @@
+<%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+  <p>ジャンル</p>
+  <%= f.radio_button :genre_id, "", checked: params[:genre_id] == '' %>
+  <%= f.label 'すべてのジャンル' %> <br>
+  <% genres.each do |genre| %>
+    <%= f.radio_button :genre_id, genre.id, checked: params[:genre_id] == genre.id.to_s %>
+    <%= f.label genre.name %><br>
+  <% end %>
+
+  <p>都道府県</p>
+  <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, selected: params[:prefecture_id], include_blank: true) %><br>
+
+  <p>フリーワード</p>
+  <%= f.text_field :keyword ,value: params[:keyword] %><br>
+
+  <%= f.submit "検索" %>
+<% end %>

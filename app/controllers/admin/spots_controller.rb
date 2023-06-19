@@ -3,6 +3,7 @@ class Admin::SpotsController < ApplicationController
   
     def new
       @spot = Spot.new
+      
     end
   
    def index
@@ -25,8 +26,14 @@ class Admin::SpotsController < ApplicationController
    end
   
   def search
-    @spots = Spot.search(params[:keyword]).page(params[:page]).per(12)
+    spots = params[:keyword].present? ? Spot.search(params[:keyword]) : Spot.all
+    spots = spots.where(genre_id: params[:genre_id]) if params[:genre_id].present?
+    spots = spots.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present?
+    @spots = spots.page(params[:page]).per(12)
+    
+    @genre = Genre.find_by(id: params[:genre_id])
     @genres = Genre.only_active
+    @prefectures = Prefecture.all
     @keyword = params[:keyword]
     render "index"
   end
@@ -34,6 +41,7 @@ class Admin::SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     @spot.save ? (redirect_to admin_spot_path(@spot)) : (render :new)
+    
   end
 
   def show
