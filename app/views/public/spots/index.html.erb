@@ -11,6 +11,14 @@
 		<% end %>
 		<% if @spots.first %>
 		<div class="spots">
+			
+			<!-------------------------------->
+			<%= link_to '新しい順', spots_path(latest: "true") %>
+      <%= link_to '古い順', spots_path(old: "true") %>
+      <%= link_to '評価の高い順', spots_path(star_count: "true") %><br>
+			<!-------------------------------->
+			
+			
 			<% @spots.each do |spot| %>
 				<%= link_to spot_path(spot) do %>
 					<%= image_tag spot.get_spot_image(100, 100), format: "jpeg", fallback: "no-image.png" %>

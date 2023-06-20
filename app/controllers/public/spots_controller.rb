@@ -8,14 +8,29 @@ class Public::SpotsController < ApplicationController
   end
 
   def index
+   
     @genres = Genre.only_active
-    if params[:genre_id]
+    if params[:latest]
+      all_spots = Spot.latest
+    elsif params[:old]
+      all_spots = Spot.old
+     elsif params[:star_count]
+      all_spots = Spot.all.each do |spot|
+      spot.average = spot.average_score
+    end
+      all_spots = all_spots.sort_by { |spot| -spot.average }
+     
+    elsif params[:genre_id]
       @genre = @genres.find(params[:genre_id])
       all_spots = @genre.spots
     else
       all_spots = Spot.where_genre_active.includes(:genre)
     end
+    if params[:star_count]
+      @spots = Kaminari.paginate_array(all_spots).page(params[:page]).per(12)
+    else
       @spots = all_spots.page(params[:page]).per(12)
+    end
       @all_spots_count = all_spots.count
   end
 end
@@ -40,5 +55,5 @@ end
    private
 
   def spot_params
-    params.require(:spot).permit(:genre_id, :name, :introduction, :spot_image, :address, :prefecture_id)
+    params.require(:spot).permit(:genre_id, :name, :introduction, :spot_image, :address, :prefecture_id )
   end

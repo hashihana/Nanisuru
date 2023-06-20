@@ -11,6 +11,14 @@ class Spot < ApplicationRecord
   has_one_attached :spot_image
   belongs_to :prefecture
   
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  
+  attr_accessor :average
+  def average_score
+    self.reviews.sum(:all_rating) / self.reviews.length
+  end
+  
   def get_spot_image(width, height)
   unless spot_image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpg')
