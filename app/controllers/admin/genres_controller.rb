@@ -18,15 +18,18 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
+     @genre = Genre.find(params[:id])
   end
+  
 
   def update
+    @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      unless @genre.is_active
-        @genre.items.update_all(is_active: false)
-      end
+
+      flash[:success] = "更新に成功しました！"
       redirect_to admin_genres_path
     else
+      flash[:danger] = "更新に失敗しました。"
       render :edit
     end
   end
