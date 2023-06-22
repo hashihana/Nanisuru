@@ -34,7 +34,20 @@
           <% end %>
         </td>
         <td>
-          <%= review.comment %>
+          <div class="content-body">
+            <% if review.comment.length > 10 %>
+              <div class="truncated">
+                <p><%= review.comment.truncate(10)%></p>
+                <p class="see-more">&lt;もっと見る&gt;</p>
+              </div>
+              <div class="untruncated" style="display: none">
+                <p><%= review.comment %></p>
+              </div>
+            <% else %>
+              <p><%= review.comment %></p>
+            <% end %>
+            <%= javascript_pack_tag 'list'%>
+          </div>
         </td>
         <td>
          <%= link_to "削除", admin_spot_review_path(spot, review), method: :delete, class: "btn btn-danger pull-right", remote: true %>
