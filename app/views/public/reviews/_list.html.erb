@@ -1,20 +1,15 @@
-
 <table class="customer_review">
-      <% spot.reviews.each do |review| %>
+  <% spot.reviews.each do |review| %>
+    <thead>
+      <th></th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
       <tr>
-         <thead>
-        <th></th>
-        <th></th>
-        <th></th>
-        </thead>
-      <tbody>
-
         <td>
           <%= review.customer.nickname %>
           <%= review.created_at.strftime('%Y/%m/%d') %></br>
-          <%= link_to customer_path(review.customer) do %>
-            <%= image_tag review.customer.get_profile_image(60,60), class: "sprofile_image" %></br>
-            <% end %>
         </td>
         <td id="review-<%= review.id %>">
           <script>
@@ -30,15 +25,23 @@
               };
               raty(elem,opt);
           </script>
-          </br>
-        <%= review.comment %></td>
+        </td>
+      </tr>
+      <tr>
         <td>
-          
+          <%= link_to customer_path(review.customer) do %>
+          <%= image_tag review.customer.get_profile_image(60,60), class: "sprofile_image" %></br>
+          <% end %>
+        </td>
+        <td>
+          <%= review.comment %>
+        </td>
+        <td>
           <% if review.customer == current_customer %>
-            <%= link_to "削除", spot_review_path(spot, review), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+          <%= link_to "削除", spot_review_path(spot, review), method: :delete, class: "btn btn-danger pull-right", remote: true %>
           <% end %>
         </td>
       </tr>
-      <% end %>
-  </tbody>
+    </tbody>
+  <% end %>
 </table>
