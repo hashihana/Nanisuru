@@ -8,7 +8,6 @@ class Public::SpotsController < ApplicationController
   end
 
   def index
-   
     @genres = Genre.only_active
     if params[:latest]
       all_spots = Spot.latest

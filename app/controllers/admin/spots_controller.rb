@@ -1,11 +1,11 @@
 class Admin::SpotsController < ApplicationController
-  
-  
+
+
     def new
       @spot = Spot.new
-      
+
     end
-  
+
    def index
     @genres = Genre.only_active
     if params[:genre_id]
@@ -24,24 +24,24 @@ class Admin::SpotsController < ApplicationController
     # @rating3 = '評価3'
     # @rating4 = '評価4'
    end
-  
+
   def search
     spots = params[:keyword].present? ? Spot.search(params[:keyword]) : Spot.all
     spots = spots.where(genre_id: params[:genre_id]) if params[:genre_id].present?
     spots = spots.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present?
     @spots = spots.page(params[:page]).per(12)
-    
+
     @genre = Genre.find_by(id: params[:genre_id])
     @genres = Genre.only_active
     @prefectures = Prefecture.all
     @keyword = params[:keyword]
     render "index"
   end
-  
+
   def create
     @spot = Spot.new(spot_params)
     @spot.save ? (redirect_to admin_spot_path(@spot)) : (render :new)
-    
+
   end
 
   def show
@@ -65,11 +65,17 @@ class Admin::SpotsController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    @spot = Spot.find(params[:id])
+    @spot.destroy
+    redirect_to admin_spots_path
+  end
 
   private
 
   def spot_params
     params.require(:spot).permit(:genre_id, :name, :introduction, :spot_image, :address, :prefecture_id)
   end
-  
+
 end
