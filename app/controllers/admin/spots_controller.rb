@@ -8,7 +8,12 @@ class Admin::SpotsController < ApplicationController
 
    def index
     @genres = Genre.only_active
-    if params[:genre_id]
+    if params[:latest]
+      all_spots = Spot.latest
+    elsif params[:old]
+      all_spots = Spot.old
+   
+    elsif params[:genre_id] #if→elsif
       @genre = @genres.find(params[:genre_id])
       all_spots = @genre.spots
     else
