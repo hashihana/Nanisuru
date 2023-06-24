@@ -16,7 +16,7 @@
 					<% @spots.each do |spot| %>
 						<div class="col-4 mb-5">
 							<%= link_to admin_spot_path(spot) do %>
-								<%= image_tag spot.get_spot_image(400,400), class: "img-thumbnail" %>
+								<%= image_tag spot.get_spot_image(250,200), class: "img-thumbnail" %>
 								<!--上記から削除　, format: "jpeg", fallback: "no-image.png"-->
 								<div><%= spot.name %></div>
 							<% end %>
