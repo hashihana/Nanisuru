@@ -38,15 +38,14 @@
             <% if review.comment.length > 10 %>
               <div class="truncated">
                 <p><%= review.comment.truncate(10)%></p>
-                <p class="see-more">&lt;もっと見る&gt;</p>
+                <a class="see-more link-primary">&lt;もっと見る&gt;</a>
               </div>
-              <div class="untruncated" style="display: none">
+              <div class="hide untruncated">
                 <p><%= review.comment %></p>
               </div>
             <% else %>
               <p><%= review.comment %></p>
             <% end %>
-            <%= javascript_pack_tag 'list'%>
           </div>
         </td>
         <td>

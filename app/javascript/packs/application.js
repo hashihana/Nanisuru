@@ -22,8 +22,6 @@ ActiveStorage.start()
 // require('packs/raty')
 
 
-
-
 import Raty from "raty.js"
 window.raty = function(elem,opt){
     var raty =  new Raty(elem,opt)
@@ -31,3 +29,4 @@ window.raty = function(elem,opt){
     return raty;
 }
 
+import "list.js"
