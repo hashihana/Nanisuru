@@ -21,7 +21,7 @@
 				<% @random.each do |spot| %>
 					<div class="recommend-product mx-5">
 						<%= link_to spot_path(spot) do %>
-							<%= image_tag spot.get_spot_image(200,150) %>
+							<%= image_tag spot.get_spot_image(200,150), class: "img-thumbnail spot_image" %>
 							<h5><%= spot.name %></h5>
 							<!--<p><%#= spot.genre.name %></p>-->
 						<% end %>

@@ -2,6 +2,12 @@
 
 .spot_image {
   height: 150px;
+  width: 90%;
+  object-fit: contain;
+}
+
+.spot_image_show {
+  height: 300px;
   width: 100%;
   object-fit: contain;
 }

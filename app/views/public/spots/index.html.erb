@@ -10,20 +10,22 @@
 				<h2 class="section-ttl">スポット (全<%= @all_spots_count %>件)</h2>
 			<% end %>
 			<% if @spots.first %>
-				<%= link_to '新しい順', spots_path(latest: "true") %>
-	      <%= link_to '古い順', spots_path(old: "true") %>
-	      <%= link_to '評価の高い順', spots_path(star_count: "true") %>
+				<div>
+					<i class="fas fa-sort-amount-down"></i><%= link_to '新しい順', spots_path(latest: "true") %>
+		      <i class="fas fa-sort-amount-up-alt"></i><%= link_to '古い順', spots_path(old: "true") %>
+		      <i class="fas fa-sort-numeric-down-alt"></i><%= link_to '評価の高い順', spots_path(star_count: "true") %>
+		    </div>
 				<div class="spots row">
 					<% @spots.each do |spot| %>
 						<div class="col-4 mb-5">
 							<%= link_to spot_path(spot) do %>
-							<%= image_tag spot.get_spot_image(250,200), class: "img-thumbnail" %>
+							<%= image_tag spot.get_spot_image(250,200), class: "img-thumbnail spot_image" %>
 								<div><%= spot.name %></div>
 							<% end %>
 							<p class="my-0">ジャンル：<%= spot.genre.name %></p>
 							<!--<div class="average-review-rating" data-score=<%= spot.reviews.average(:all_rating) %>></div>-->
-　						<span>総合評価：<%= spot.reviews.average(:all_rating).to_f.round(1) %></span>
-　					</div>
+	　						<span>総合評価：<%= spot.reviews.average(:all_rating).to_f.round(1) %></span>
+	　				</div>
 					<% end %>
 				</div>
 				<%= paginate @spots %>
