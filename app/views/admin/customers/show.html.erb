@@ -2,10 +2,12 @@
 	<h2 class="section-ttl"><%= @customer.nickname %>さんのページ</h2>
 	<div class="row">
 
-	<table class="table table-bordered table-hover">
+	<table class="table table-bordered table-hover mt-4">
 		<thead>
-			<th></th>
-			<th></th>
+			<tr>
+				<th>会員情報</th>
+				<th><%= image_tag @customer.get_profile_image(60,60), class: "rounded-circle" %></th>
+			</tr>
 		</thead>
 		<tbody>
 			<tr>
@@ -16,12 +18,12 @@
 				<td>ニックネーム</td>
 				<td><%= @customer.nickname %></td>
 			</tr>
-			
+
 			<tr>
 				<td>メールアドレス</td>
 				<td colspan="2"><%= @customer.email %></td>
 			</tr>
-			
+
 				<!--<td>会員ステータス</td>-->
 				<!--<td colspan="2">-->
 				<!-- <%# if @customer.is_deleted %>-->
@@ -30,12 +32,12 @@
     <!--    <span class="bg-info">有効会員</span>-->
     <!--      <%# end %>-->
 				<!--</td>-->
-				
+
 				<tr>
 				<td>会員ステータス</td>
 				<td colspan="2">
 					<% if @customer.is_active? %>
-						<span class="text-active">有効	</span>					
+						<span class="text-active">有効	</span>
 					<% else %>
 						<span class="text-invalid">退会済み</span>
 					<% end %>
