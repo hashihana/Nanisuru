@@ -13,7 +13,7 @@ class Admin::SpotsController < ApplicationController
     elsif params[:old]
       all_spots = Spot.old
    
-    elsif params[:genre_id] #if→elsif
+    elsif params[:genre_id] 
       @genre = @genres.find(params[:genre_id])
       all_spots = @genre.spots
     else

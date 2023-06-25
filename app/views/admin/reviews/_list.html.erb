@@ -36,11 +36,11 @@
         <td style="width: 70%">
           <div class="content-body">
             <% if review.comment.length > 15 %>
-              <div class="truncated">
+              <div class="truncated_<%= review.id %>">
                 <p><%= review.comment.truncate(15)%></p>
-                <a class="see-more link-primary">&lt;もっと見る&gt;</a>
+                <a class="see-more_<%= review.id %> link-primary">&lt;もっと見る&gt;</a>
               </div>
-              <div class="hide untruncated">
+              <div class="hide untruncated_<%= review.id %>">
                 <p><%= review.comment %></p>
               </div>
             <% else %>
