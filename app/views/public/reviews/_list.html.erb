@@ -34,7 +34,19 @@
           <% end %>
         </td>
         <td>
-          <%= review.comment %>
+          <div class="content-body">
+            <% if review.comment.length > 15 %>
+              <div class="truncated">
+                <p><%= review.comment.truncate(15)%></p>
+                <a class="see-more link-primary">&lt;もっと見る&gt;</a>
+              </div>
+              <div class="hide untruncated">
+                 <p><%= review.comment %></p>
+              </div>
+            <% else %>
+              <p><%= review.comment %></p>
+            <% end %>
+          </div>
         </td>
         <td>
           <% if review.customer == current_customer %>

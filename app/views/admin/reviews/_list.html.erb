@@ -35,9 +35,9 @@
         </td>
         <td>
           <div class="content-body">
-            <% if review.comment.length > 10 %>
+            <% if review.comment.length > 15 %>
               <div class="truncated">
-                <p><%= review.comment.truncate(10)%></p>
+                <p><%= review.comment.truncate(15)%></p>
                 <a class="see-more link-primary">&lt;もっと見る&gt;</a>
               </div>
               <div class="hide untruncated">
