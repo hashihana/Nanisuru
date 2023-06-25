@@ -39,11 +39,11 @@
 					<td style="width: 50%">
 						<div class="content-body">
             <% if review.comment.length > 25 %>
-              <div class="truncated">
+              <div id="truncated_<%= review.id %>">
                 <p><%= review.comment.truncate(25)%></p>
-                <a class="see-more link-primary">&lt;もっと見る&gt;</a>
+                <a id="see-more_<%= review.id %>" class="link-primary link">&lt;もっと見る&gt;</a>
               </div>
-              <div class="hide untruncated">
+              <div id="untruncated_<%= review.id %>" class="hide">
                 <p><%= review.comment %></p>
               </div>
             <% else %>
@@ -54,6 +54,15 @@
             	<%= link_to "削除", admin_customer_review_path(@customer, review), method: :delete, class: "btn btn-outline-danger", remote: true %>
           </td>
 				</tr>
+				<script>
+			    $(document).ready(function () {
+			      $('#see-more_<%= review.id %>').on('click', function(){
+			        $('#untruncated_<%= review.id %>').removeClass('hide')
+			        $('#truncated_<%= review.id %>').addClass("hide")
+			        $('#see-more_<%= review.id %>').addClass("hide")
+			      });
+			    });
+			  </script>
 			<% end %>
 		</tbody>
 	</table>

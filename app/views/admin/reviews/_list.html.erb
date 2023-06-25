@@ -1,5 +1,5 @@
-<table class="customer_review">
-  <% spot.reviews.each do |review| %>
+<% spot.reviews.each do |review| %>
+  <table class="customer_review">
     <thead>
       <th></th>
       <th></th>
@@ -36,11 +36,11 @@
         <td style="width: 70%">
           <div class="content-body">
             <% if review.comment.length > 15 %>
-              <div class="truncated_<%= review.id %>">
+              <div id="truncated_<%= review.id %>">
                 <p><%= review.comment.truncate(15)%></p>
-                <a class="see-more_<%= review.id %> link-primary">&lt;もっと見る&gt;</a>
+                <a id="see-more_<%= review.id %>" class="link-primary link">&lt;もっと見る&gt;</a>
               </div>
-              <div class="hide untruncated_<%= review.id %>">
+              <div id="untruncated_<%= review.id %>" class="hide">
                 <p><%= review.comment %></p>
               </div>
             <% else %>
@@ -53,5 +53,15 @@
         </td>
       </tr>
     </tbody>
-  <% end %>
-</table>
+  </table>
+  <script>
+    $(document).ready(function () {
+      $('#see-more_<%= review.id %>').on('click', function(){
+        $('#untruncated_<%= review.id %>').removeClass('hide')
+        $('#truncated_<%= review.id %>').addClass("hide")
+        $('#see-more_<%= review.id %>').addClass("hide")
+      });
+    });
+  </script>
+<% end %>
+
