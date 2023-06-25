@@ -10,8 +10,10 @@
 				<h2 class="section-ttl">スポット (全<%= @all_spots_count %>件)</h2>
 			<% end %>
 			<% if @spots.first %>
-				<%= link_to '新しい順', admin_spots_path(latest: "true") %>
-	      <%= link_to '古い順', admin_spots_path(old: "true") %>
+				<div>
+					<i class="fas fa-sort-amount-down"></i><%= link_to '新しい順', admin_spots_path(latest: "true") %>
+		      <i class="fas fa-sort-amount-up-alt"></i><%= link_to '古い順', admin_spots_path(old: "true") %>
+		    </div>
 				<div class="spots row">
 					<% @spots.each do |spot| %>
 						<div class="col-4 mb-5">

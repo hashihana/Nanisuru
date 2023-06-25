@@ -14,13 +14,13 @@
 		<tbody>
 			<% @reviews.each do |review| %>
 				<tr>
-					<td><%= review.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+					<td style="width: 10%"><%= review.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
 					<!--<td>-->
 					<!--	<%# if review.customer.present? %>-->
 					<!--	  <%#= link_to review.customer.nickname, admin_customer_path(review.customer) %>-->
 					<!--	<%# end %>-->
 					<!--</td>-->
-					<td><%= link_to review.spot.name, admin_spot_path(review.spot) %></td>
+					<td style="width: 20%"><%= link_to review.spot.name, admin_spot_path(review.spot) %></td>
 				<td id="review-<%= review.id %>">
           <script>
             var elem = document.getElementById("review-<%= review.id %>");
@@ -36,9 +36,21 @@
               raty(elem,opt);
           </script>
         </td>
-					<td><%= review.comment %></td>
-
-					<td>
+					<td style="width: 50%">
+						<div class="content-body">
+            <% if review.comment.length > 25 %>
+              <div class="truncated">
+                <p><%= review.comment.truncate(25)%></p>
+                <a class="see-more link-primary">&lt;もっと見る&gt;</a>
+              </div>
+              <div class="hide untruncated">
+                <p><%= review.comment %></p>
+              </div>
+            <% else %>
+              <p><%= review.comment %></p>
+            <% end %>
+          </div>
+					<td style="width: 10%">
             	<%= link_to "削除", admin_customer_review_path(@customer, review), method: :delete, class: "btn btn-outline-danger", remote: true %>
           </td>
 				</tr>

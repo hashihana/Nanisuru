@@ -28,12 +28,12 @@
         </td>
       </tr>
       <tr>
-        <td>
+        <td style="width: 20%">
           <%= link_to customer_path(review.customer) do %>
           <%= image_tag review.customer.get_profile_image(60,60), class: "rounded-circle" %></br>
           <% end %>
         </td>
-        <td>
+        <td style="width: 70%">
           <div class="content-body">
             <% if review.comment.length > 15 %>
               <div class="truncated">
@@ -48,7 +48,7 @@
             <% end %>
           </div>
         </td>
-        <td>
+        <td style="width: 10%">
           <% if review.customer == current_customer %>
           <%= link_to "削除", spot_review_path(spot, review), method: :delete, class: "btn btn-danger pull-right", remote: true %>
           <% end %>
