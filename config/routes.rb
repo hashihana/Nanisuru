@@ -20,7 +20,7 @@ end
         resources :reviews
     end
     resources :genres, only: [:index, :create, :edit, :update]
-    get "search" => "spots#search"
+     get "search" => "spots#search"
   end
 
 

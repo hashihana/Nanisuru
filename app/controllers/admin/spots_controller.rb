@@ -7,38 +7,51 @@ class Admin::SpotsController < ApplicationController
 
    def index
     @genres = Genre.only_active
-    if params[:latest]
-      all_spots = Spot.latest
-    elsif params[:old]
-      all_spots = Spot.old
-    elsif params[:genre_id]
-      @genre = @genres.find(params[:genre_id])
-      all_spots = @genre.spots
-    else
-      all_spots = Spot.where_genre_active.includes(:genre)
-    end
-    @spots = all_spots.page(params[:page]).per(12)
-    @all_spots_count = all_spots.count
-
-    @reviews = Review.all
-    @all_rating = '総合評価'
-    # @rating1 = '評価1'
-    # @rating2 = '評価2'
-    # @rating3 = '評価3'
-    # @rating4 = '評価4'
-   end
-
-  def search
+    @genre = Genre.find_by(id: params[:genre_id])
     spots = params[:keyword].present? ? Spot.search(params[:keyword]) : Spot.all
     spots = spots.where(genre_id: params[:genre_id]) if params[:genre_id].present?
     spots = spots.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present?
+     if params[:latest]
+      spots = spots.latest
+    elsif params[:old]
+      spots = spots.old
+    end
     @spots = spots.page(params[:page]).per(12)
+    @all_spots_count = spots.length
+    
+    # @genres = Genre.only_active
+    # if params[:latest]
+    #   all_spots = Spot.latest
+    # elsif params[:old]
+    #   all_spots = Spot.old
+    # elsif params[:genre_id]
+    #   @genre = @genres.find(params[:genre_id])
+    #   all_spots = @genre.spots
+    # else
+    #   all_spots = Spot.where_genre_active.includes(:genre)
+    # end
+    # @spots = all_spots.page(params[:page]).per(12)
+    # @all_spots_count = all_spots.count
 
-    @genre = Genre.find_by(id: params[:genre_id])
-    @genres = Genre.only_active
-    @prefectures = Prefecture.all
-    @keyword = params[:keyword]
-    render "index"
+    # @reviews = Review.all
+    # @all_rating = '総合評価'
+    # # @rating1 = '評価1'
+    # # @rating2 = '評価2'
+    # # @rating3 = '評価3'
+    # # @rating4 = '評価4'
+   end
+
+  def search
+    # spots = params[:keyword].present? ? Spot.search(params[:keyword]) : Spot.all
+    # spots = spots.where(genre_id: params[:genre_id]) if params[:genre_id].present?
+    # spots = spots.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present?
+    # @spots = spots.page(params[:page]).per(12)
+
+    # @genre = Genre.find_by(id: params[:genre_id])
+    # @genres = Genre.only_active
+    # @prefectures = Prefecture.all
+    # @keyword = params[:keyword]
+    # render "index"
   end
 
   def create
