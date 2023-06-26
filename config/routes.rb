@@ -30,7 +30,7 @@ scope module: :public do
     resources :spots do
     resources :reviews
   end
-    get "search" => "spots#search"
+    # get "search" => "spots#search"
     resources :customers do #, only: [:index, :show, :create, :edit, :update]
     resources :reviews, only: [:destroy]
   end

@@ -3,7 +3,6 @@ class Admin::SpotsController < ApplicationController
 
     def new
       @spot = Spot.new
-
     end
 
    def index
@@ -12,8 +11,7 @@ class Admin::SpotsController < ApplicationController
       all_spots = Spot.latest
     elsif params[:old]
       all_spots = Spot.old
-   
-    elsif params[:genre_id] 
+    elsif params[:genre_id]
       @genre = @genres.find(params[:genre_id])
       all_spots = @genre.spots
     else
@@ -46,7 +44,6 @@ class Admin::SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     @spot.save ? (redirect_to admin_spot_path(@spot)) : (render :new)
-
   end
 
   def show
