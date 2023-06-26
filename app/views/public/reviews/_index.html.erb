@@ -1,42 +1,63 @@
 <table class="customer_review">
-		<h4><%= @customer.nickname %>さんのレビュー履歴一覧</h4>
-	<table class="table">
+  <h4><%= @customer.nickname %>さんのレビュー履歴一覧</h4>
+  <% @reviews.each do |review| %>
+    <table class="table">
 		 <thead class="thead-light">
-		  <tr>
+	    <tr>
 			  <th>レビュー日</th>
 				<th>スポット</th>
 				<th>評価</th>
 				<th>レビュー詳細</th>
 				<th>削除</th>
-			</tr>
-		</thead>
-	<tbody>
-	  	<% @reviews.each do |review| %>
-				<tr>
-					<td><%= review.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
-					<td><%= link_to review.spot.name, spot_path(review.spot) %></td>
-				<td id="review-<%= review.id %>">
-          <script>
-            var elem = document.getElementById("review-<%= review.id %>");
-            var opt = {
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-              scoreName: 'review[all_rating]',
-              half: true,
-              readOnly: true,
-              score: <%= review.all_rating %>
-              };
-              raty(elem,opt);
-          </script>
-        </td>
-					<td><%= review.comment %></td>
-				
-					<td><%= link_to "削除", customer_review_path(@customer, review), method: :delete, class: "btn btn-danger pull-right" %></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
-	</div>
-	</table>
-	<%= paginate @reviews %>
+		   </tr>
+		  </thead>
+    	<tbody>
+  		  <tr>
+  				<td style="width: 10%"><%= review.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+  				<td style="width: 10%"><%= link_to review.spot.name, spot_path(review.spot) %></td>
+  				<td style="width: 10%" id="review-<%= review.id %>">
+            <script>
+              var elem = document.getElementById("review-<%= review.id %>");
+              var opt = {
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                starHalf: "<%= asset_path('star-half.png') %>",
+                scoreName: 'review[all_rating]',
+                half: true,
+                readOnly: true,
+                score: <%= review.all_rating %>
+                };
+                raty(elem,opt);
+            </script>
+          </td>
+          <td style="width: 55%">
+            <div class="content-body">
+              <% if review.comment.length > 15 %>
+                <div id="truncated_<%= review.id %>">
+                  <p><%= review.comment.truncate(15)%></p>
+                  <a id="see-more_<%= review.id %>" class="link-primary link">&lt;もっと見る&gt;</a>
+                </div>
+                <div id="untruncated_<%= review.id %>" class="hide">
+                  <p><%= review.comment %></p>
+                </div>
+              <% else %>
+                <p><%= review.comment %></p>
+              <% end %>
+            </div>
+          </td>
+  				<td style="width: 15%"><%= link_to "削除", customer_review_path(@customer, review), method: :delete, class: "btn btn-danger pull-right" %></td>
+  			</tr>
+  		</tbody>
+	  </table>
+    <script>
+      $(document).ready(function () {
+        $('#see-more_<%= review.id %>').on('click', function(){
+          $('#untruncated_<%= review.id %>').removeClass('hide')
+          $('#truncated_<%= review.id %>').addClass("hide")
+          $('#see-more_<%= review.id %>').addClass("hide")
+        });
+      });
+    </script>
+  <% end %>
+</table>
+<%= paginate @reviews %>

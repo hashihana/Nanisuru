@@ -1,28 +1,27 @@
 <div class="container wrapper flex">
-		<h2 class="section-ttl">マイページ</h2>
-  <div class="row">
- 
-  	<div class="col-md-3">
-		<%= render 'public/customers/sidebar', customers: @customers %>
-	</div>
+	<h2 class="section-ttl">マイページ</h2>
+  	<div class="row">
+  		<div class="col-md-3">
+				<%= render 'public/customers/sidebar', customers: @customers %>
+			</div>
 
-<div class="col-md-9">
-<!--<h4>お気に入り</h4>-->
-<!--</div>-->
-
-<!--	<div class="row">-->
-<!--  	<div class="content">-->
-			<%= render 'public/reviews/index', reviews: @reviews %>
+			<div class="col-md-9">
+				<!--<h4>お気に入り</h4>-->
+				<!--</div>-->
+				
+				<!--	<div class="row">-->
+				<!--  	<div class="content">-->
+				<%= render 'public/reviews/index', reviews: @reviews %>
+			</div>
 		</div>
-	</div>
 
-		<!--<%# @customer.each do |customer| %>-->
-		<!--<p><%#= image_tag customer.get_profile_image(100,100), class:"rounded-circle";  %></p>-->
-		<!--<h5 class="profile-name display-4"><%#= customer.nickname %></h5>-->
-		<!--<%# end %>-->
-		
-	<!--<div class="flex">-->
-	<!--	<%#= link_to "「行きたい」を見る", favorite_path, class: "btn btn-primary" %>-->
-	<!--</div>-->
-<!--	</div>-->
-<!--</div>-->
+				<!--<%# @customer.each do |customer| %>-->
+				<!--<p><%#= image_tag customer.get_profile_image(100,100), class:"rounded-circle";  %></p>-->
+				<!--<h5 class="profile-name display-4"><%#= customer.nickname %></h5>-->
+				<!--<%# end %>-->
+				
+			<!--<div class="flex">-->
+			<!--	<%#= link_to "「行きたい」を見る", favorite_path, class: "btn btn-primary" %>-->
+			<!--</div>-->
+		<!--	</div>-->
+		<!--</div>-->

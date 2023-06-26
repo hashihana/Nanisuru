@@ -5,9 +5,9 @@
   	</div>
 		<div class="content col-md-9">
 			<% if @genre.present? %>
-				<h2 class="section-ttl">ジャンル：<%= @genre.name %> (全<%= @all_spots_count %>件)</h2>
+				<h2 class="section-ttl">[管理者]ジャンル：<%= @genre.name %> (全<%= @all_spots_count %>件)</h2>
 			<% else %>
-				<h2 class="section-ttl">スポット (全<%= @all_spots_count %>件)</h2>
+				<h2 class="section-ttl">[管理者]スポット (全<%= @all_spots_count %>件)</h2>
 			<% end %>
 			<% if @spots.first %>
 				<div>
