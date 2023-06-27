@@ -18,13 +18,13 @@ class Public::SpotsController < ApplicationController
     elsif params[:old]
       spots = spots.old
     elsif params[:star_count]
-      spots = spots.sort_by { |spot| spot.average_score }.reverse
+      spots = spots.sort_by { |spot| spot.average_score.nan? ? 0 : spot.average_score }.reverse
     end
 
     @all_spots_count = spots.length
     @spots = Kaminari.paginate_array(spots.to_a).page(params[:page]).per(6)
   end
- 
+
    private
 
   def spot_params

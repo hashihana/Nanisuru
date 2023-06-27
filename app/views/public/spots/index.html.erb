@@ -15,7 +15,7 @@
 		    <i class="fas fa-sort-amount-up-alt"></i><%= link_to '古い順', spots_path(old: "true") %>
 		    <i class="fas fa-sort-numeric-down-alt"></i><%= link_to '評価の高い順', spots_path(star_count: "true") %>
 		</div>
-			
+
 				<div class="spots row">
 					<% @spots.each do |spot| %>
 						<div class="col-4 mb-5">
