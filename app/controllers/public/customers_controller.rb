@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
-
   # before_action :authenticate_customer!
   # before_action :set_current_customer
+  before_action :is_guest?
 
   def show
     @customer = Customer.find(params[:id])
@@ -30,6 +30,12 @@ class Public::CustomersController < ApplicationController
 
   def set_current_customer
     @customer = current_customer
+  end
+
+  def is_guest?
+    if current_customer == Customer.guest
+      redirect_to root_path
+    end
   end
 
   def customer_params

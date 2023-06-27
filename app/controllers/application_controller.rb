@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   
-  #before_action :authenticate_customer!,except: [:top]
+  before_action :authenticate_customer_unless_admin!,except: [:top]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   
@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
     if resource == :admin
       admin_session_path
     else root_path
+    end
+  end
+    
+  def authenticate_customer_unless_admin!
+    unless current_admin
+      authenticate_customer!
     end
   end
   
