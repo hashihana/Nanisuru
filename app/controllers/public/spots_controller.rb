@@ -22,7 +22,7 @@ class Public::SpotsController < ApplicationController
     end
 
     @all_spots_count = spots.length
-    @spots = Kaminari.paginate_array(spots.to_a).page(params[:page]).per(12)
+    @spots = Kaminari.paginate_array(spots.to_a).page(params[:page]).per(6)
   end
  
    private

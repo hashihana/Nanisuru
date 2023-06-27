@@ -16,9 +16,9 @@ class Admin::SpotsController < ApplicationController
     elsif params[:old]
       spots = spots.old
     end
-    @spots = spots.page(params[:page]).per(12)
+    @spots = spots.page(params[:page]).per(6)
     @all_spots_count = spots.length
-    
+
     # @genres = Genre.only_active
     # if params[:latest]
     #   all_spots = Spot.latest
@@ -80,7 +80,7 @@ class Admin::SpotsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @spot = Spot.find(params[:id])
     @spot.destroy
