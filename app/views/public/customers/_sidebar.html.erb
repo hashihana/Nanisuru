@@ -1,19 +1,19 @@
 <table class="customer-tabel table table-bordered table-hover">
-<thead class="customer-thead">
-<tr>
-<th class="customer">ユーザー情報</th>
-</tr>
-</thead>
+ <thead class="customer-thead">
+  <tr>
+   <th class="customer">ユーザー情報</th>
+  </tr>
+ </thead>
 
-<tbody>
-<tr>
-<td>
- <% if @customer.id == current_customer.id %>
-<%= image_tag current_customer.get_profile_image(60,60), class: "rounded-circle" %></br>
-<%= current_customer.nickname %>
- <% end %>
-</td>
-</tr>
-<tr><td><%= link_to "編集する", edit_customer_path, class: "btn btn-outline-secondary" %></td></tr>
-</tbody>
+ <tbody>
+  <tr>
+   <td>
+    <% if @customer.id == current_customer.id %>
+     <%= image_tag current_customer.get_profile_image(60,60), class: "rounded-circle" %></br>
+     <%= current_customer.nickname %>
+    <% end %>
+   </td>
+  </tr>
+  <tr><td><%= link_to "編集する", edit_customer_path, class: "btn btn-outline-secondary" %></td></tr>
+ </tbody>
 </table>

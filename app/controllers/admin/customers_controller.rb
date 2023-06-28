@@ -1,6 +1,4 @@
 class Admin::CustomersController < ApplicationController
-    
-# before_action :authenticate_admin!
 
   def index
     @customers = Customer.page(params[:page])
@@ -15,7 +13,6 @@ class Admin::CustomersController < ApplicationController
   end
 
   def update
-      
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
         flash[:success] = "Customer was successfully updated"
@@ -23,13 +20,13 @@ class Admin::CustomersController < ApplicationController
     else
         render "edit"
     end
- end
+  end
 
   private
 
   def customer_params
     params.require(:customer).permit(:nickname, :email, :is_active)
   end
-  
+
 end
-    
+

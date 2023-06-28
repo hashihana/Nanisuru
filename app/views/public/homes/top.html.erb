@@ -1,18 +1,13 @@
-
-<!--<div class="my-3 alert-danger">-->
-<!--	<%# flash.each do |key, message| %>-->
-<!--	<div class="flash <%#= key %>">-->
-<!--	<%#= message %>-->
-<!--	</div>-->
-<!--	<%# end %>-->
-<!--</div>-->
+<div class="my-2 alert-danger">
+	<% flash.each do |key, message| %>
+	<div class="flash <%= key %>">
+	<%= message %>
+	</div>
+	<% end %>
+</div>
 <div class="container wrapper flex">
 	<div class="col-md-12 mx-auto mt-5">
  		<div class="row">
-			<!--<div class="content">-->
-			<!--	<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">-->
-			<!--	<%#= image_tag 'nanisuru.jpeg', size: '700x380' %>-->
-			<!--	</div>-->
 	 		<p><strong>「何する？」</strong>は体験型のおでかけスポットを探してみんなの評価が見れるレビューサイトです。</p>
 		  	<p>「友達と何か面白いことをしたいけど何も思いつかない。」「いつも同じようなデートをしていてつまらない。」</p>
 		  	<p>そんな人の悩みを解決するサービスです！</p>
@@ -23,7 +18,6 @@
 		</div>
 
 		<div class="content">
-			<!--<div><%#= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %></div>-->
 			<h3 class="section-ttl mt-5 mb-3"><%= image_tag 'osusume.png' %></h3>
 			<div class="recommend-container d-flex flex-row">
 				<% @random.each do |spot| %>
@@ -31,7 +25,6 @@
 						<%= link_to spot_path(spot) do %>
 							<%= image_tag spot.get_spot_image(200,150), class: "img-thumbnail spot_image" %>
 							<h5><%= spot.name %></h5>
-							<!--<p><%#= spot.genre.name %></p>-->
 						<% end %>
 					</div>
 				<% end %>

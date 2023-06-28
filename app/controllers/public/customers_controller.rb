@@ -6,7 +6,6 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @reviews = Review.where(customer_id: @customer.id).page(params[:page]).per(10).reverse_order
-    # @spot = Spot.find(params[:id])
     @review = Review.new
   end
 
@@ -24,6 +23,11 @@ class Public::CustomersController < ApplicationController
   end
 
   def confirm_withdraw
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_active: false)
+    reset_session
+    flash[:notice] = "退会完了しました。またの機会がありましたら、ご利用よろしくお願い申し上げます。"
+    redirect_to root_path
   end
 
   private

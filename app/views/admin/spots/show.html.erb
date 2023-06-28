@@ -1,3 +1,4 @@
+<div class="alert-success"><%= flash[:notice] %></div>
 <div class="container wrapper flex">
   <div class="row">
     <div class="col-md-3 border rounded">
@@ -5,7 +6,6 @@
     </div>
 	  <div class="content col-md-9">
 		  <h2 class="section-ttl"><%= @spot.name %></h2>
-		  <div><%= flash[:notice] %></div>
 		  <!--<%#= render 'layouts/error_messages', resource: @ %>-->
 		  <div class="flex">
 			  <%= image_tag @spot.get_spot_image(400, 400), class: "img-thumbnail spot_image_show" %>
