@@ -1,6 +1,5 @@
 class Public::CustomersController < ApplicationController
-  # before_action :authenticate_customer!
-  # before_action :set_current_customer
+  
   before_action :is_guest?
 
   def show
