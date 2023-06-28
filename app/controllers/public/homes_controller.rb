@@ -2,7 +2,7 @@ class Public::HomesController < ApplicationController
 
   def top
     @genres = Genre.only_active.includes(:spots)
-    @random = Spot.order("RANDOM()").limit(4)
+    @random = Spot.find(Spot.pluck(:id).shuffle[0..3])
   end
 
   # def guest_sign_in
