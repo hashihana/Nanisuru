@@ -22,7 +22,7 @@
          <h5>カスタマーレビュー</h5>
           <div class="average-review-rating" data-score=<%= @spot.reviews.average(:all_rating) %>></div>
 　					<p>総合評価：<%= @spot.reviews.average(:all_rating).to_f.round(1) %></p>
-            <%= render "admin/reviews/list", spot: @spot, review: @review %>
+            <%= render "admin/reviews/list", spot: @spot, review: @review, reviews: @reviews %>
         </div>
 			 </div>
 		  </div>
