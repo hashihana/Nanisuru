@@ -2,24 +2,26 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :customer_state, only: [:create]
+
   def guest_sign_in
     customer = Customer.guest
     sign_in customer
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
-  
+
   def customer_state
    @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
      if (@customer.valid_password?(params[:customer][:password]) )
-       if @customer.is_deleted == true
+       if @customer.is_active == false
         flash[:alert] = "このアカウントは退会済みです。"
         redirect_to new_customer_session_path
        end
      end
   end
-  
-  
+
+
 end
 
   # GET /resource/sign_in
