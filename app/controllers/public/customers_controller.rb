@@ -20,14 +20,19 @@ class Public::CustomersController < ApplicationController
       render :edit
     end
   end
-
+  
   def confirm_withdraw
-    @customer = Customer.find(current_customer.id)
-    @customer.update(is_active: false)
-    reset_session
-    flash[:notice] = "退会完了しました。またの機会がありましたら、ご利用よろしくお願い申し上げます。"
-    redirect_to root_path
+    @customer = current_customer
   end
+  
+  def withdraw
+      @customer = Customer.find(current_customer.id)
+      @customer.update(is_active: false)
+      reset_session
+      flash[:notice] = "退会完了しました。またの機会がありましたら、ご利用よろしくお願い申し上げます。"
+      redirect_to root_path
+  end
+
 
   private
 
