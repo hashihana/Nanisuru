@@ -1,61 +1,54 @@
-<% spot.reviews.each do |review| %>
-  <table class="customer_review">
-    <thead>
-      <th></th>
-      <th></th>
-      <th></th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <%= review.customer.nickname %>
-          <%= review.created_at.strftime('%Y/%m/%d') %><br>
-        </td>
-        <td id="review-<%= review.id %>">
-          <script>
-            var elem = document.getElementById("review-<%= review.id %>");
-            var opt = {
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-              scoreName: 'review[all_rating]',
-              half: true,
-              readOnly: true,
-              score: <%= review.all_rating %>
-              };
-              raty(elem,opt);
-          </script>
-        </td>
-      </tr>
-      <tr>
-        <td style="width: 20%">
-          <%= link_to customer_path(review.customer) do %>
-          <%= image_tag review.customer.get_profile_image(60,60), class: "rounded-circle" %></br>
-          <% end %>
-        </td>
-        <td style="width: 70%">
-          <div class="content-body">
-            <% if review.comment.length > 15 %>
-              <div id="truncated_<%= review.id %>">
-                <p><%= review.comment.truncate(15)%></p>
-                <a id="see-more_<%= review.id %>" class="link-primary link">&lt;もっと見る&gt;</a>
-              </div>
-              <div id="untruncated_<%= review.id %>" class="hide">
-                 <p><%= review.comment %></p>
-              </div>
-            <% else %>
-              <p><%= review.comment %></p>
-            <% end %>
+<% reviews.each do |review| %>
+<div class="row">
+    <div class="col-12 col-md-3">
+      <%= review.customer.nickname %>
+      <%= review.created_at.strftime('%Y/%m/%d') %><br>
+    </div>
+    <div class="col-12 col-md-9">
+      <div id="review-<%= review.id %>">
+      </div>
+      <script>
+        var elem = document.getElementById("review-<%= review.id %>");
+        var opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'review[all_rating]',
+          half: true,
+          readOnly: true,
+          score: <%= review.all_rating %>
+          };
+          raty(elem,opt);
+      </script>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12 col-md-3">
+      <%= link_to customer_path(review.customer) do %>
+      <%= image_tag review.customer.get_profile_image(60,60), class: "rounded-circle" %></br>
+      <% end %>
+    </div>
+    <div class="col-12 col-md-7">
+      <div class="content-body">
+        <% if review.comment.length > 15 %>
+          <div id="truncated_<%= review.id %>">
+            <p><%= review.comment.truncate(15)%></p>
+            <a id="see-more_<%= review.id %>" class="link-primary link">&lt;もっと見る&gt;</a>
           </div>
-        </td>
-        <td style="width: 10%">
-          <% if review.customer == current_customer %>
-          <%= link_to "削除", spot_review_path(spot, review), method: :delete, class: "btn btn-danger pull-right", remote: true %>
-          <% end %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <div id="untruncated_<%= review.id %>" class="hide">
+             <p><%= review.comment %></p>
+          </div>
+        <% else %>
+          <p><%= review.comment %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-12 col-md-2">
+      <% if review.customer == current_customer %>
+      <%= link_to "削除", spot_review_path(spot, review), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+      <% end %>
+    </div>
+  </div>
   <script>
     $(document).ready(function () {
       $('#see-more_<%= review.id %>').on('click', function(){
@@ -66,4 +59,4 @@
     });
   </script>
 <% end %>
-
+<%= paginate reviews, theme: 'twitter-bootstrap-4' %>

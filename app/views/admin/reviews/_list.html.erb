@@ -22,26 +22,26 @@
       </script>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-12 col-md-3">
       <%= link_to admin_customer_path(review.customer) do %>
       <%= image_tag review.customer.get_profile_image(60,60), class: "rounded-circle" %></br>
       <% end %>
     </div>
     <div class="col-12 col-md-7">
-          <div class="content-body">
-            <% if review.comment.length > 15 %>
-              <div id="truncated_<%= review.id %>">
-                <p><%= review.comment.truncate(15)%></p>
-                <a id="see-more_<%= review.id %>" class="link-primary link">&lt;もっと見る&gt;</a>
-              </div>
-              <div id="untruncated_<%= review.id %>" class="hide">
-                <p><%= review.comment %></p>
-              </div>
-            <% else %>
-              <p><%= review.comment %></p>
-            <% end %>
+      <div class="content-body">
+        <% if review.comment.length > 15 %>
+          <div id="truncated_<%= review.id %>">
+            <p><%= review.comment.truncate(15)%></p>
+            <a id="see-more_<%= review.id %>" class="link-primary link">&lt;もっと見る&gt;</a>
           </div>
+          <div id="untruncated_<%= review.id %>" class="hide">
+            <p><%= review.comment %></p>
+          </div>
+        <% else %>
+          <p><%= review.comment %></p>
+        <% end %>
+      </div>
     </div>
     <div class="col-12 col-md-2">
          <%= link_to "削除", admin_spot_review_path(spot, review), method: :delete, class: "btn btn-danger pull-right", remote: true %>
