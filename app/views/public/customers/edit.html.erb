@@ -1,38 +1,35 @@
 <div class="container wrapper flex">
-    <h2 class="section-ttl">会員情報編集</h2>
-    <div class="row">
-      
-	<%= form_with(model:@customer, url:customer_path, local: true ,method: :put) do |f| %>
-		<!--<%#= render 'layouts/error_messages', resource: @customer %>-->
-		<table class="customer_info">
-      <thead>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </thead>
-      <tbody>
+  <h2 class="section-ttl">会員情報編集</h2>
+  <div class="row">
 
-        <tr>
-          <td><%= f.label :"プロフィール画像" %></td>
-          <td> <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :"ニックネーム" %></td>
-          <td><%= f.text_field :nickname %></td>
-        </tr>
-         <tr>
-        <td><%= f.label :"メールアドレス" %></td>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-        </tr>
-
-      </tbody>
+	  <%= form_with(model:@customer, url:customer_path, local: true ,method: :put) do |f| %>
+  		<!--<%#= render 'layouts/error_messages', resource: @customer %>-->
+  		<table class="customer_info">
+        <thead>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= f.label :"プロフィール画像" %></td>
+            <td> <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"ニックネーム" %></td>
+            <td><%= f.text_field :nickname %></td>
+          </tr>
+           <tr>
+          <td><%= f.label :"メールアドレス" %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
+        </tbody>
       </table>
-        <div class="col-lg-5">
-          <%= f.submit "編集内容を保存する", class: "btn btn-outline-secondary" %>
-          <%= link_to '退会する', confirm_withdraw_customer_path, class: "glyphicon glyphicon-tint btn btn-danger"%>
-        </div>
-      
-       <% end %>
-</div>
+      <div class="col-lg-5">
+        <%= f.submit "編集内容を保存する", class: "btn btn-outline-secondary" %>
+        <%= link_to '退会する', confirm_withdraw_customer_path, class: "glyphicon glyphicon-tint btn btn-danger"%>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,20 +1,18 @@
 <div class="starrate">
 
-<%=@all_rating %>：<%= @reviews.average(:all_rating).to_f.round(1) %>
+  <%=@all_rating %>：<%= @reviews.average(:all_rating).to_f.round(1) %>
+  <div class="average-review-rating" data-score=<%= @reviews.average(:all_rating) %>></div>
 
-<div class="average-review-rating" data-score=<%= @reviews.average(:all_rating) %>></div>
-
-<script>
-  $('.average-review-rating').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: "<%= asset_path('star-half.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-</script>
-<br>
-
+  <script>
+    $('.average-review-rating').raty({
+      readOnly: true,
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      score: function() {
+        return $(this).attr('data-score')
+      }
+    });
+  </script>
+  <br>
 </div>

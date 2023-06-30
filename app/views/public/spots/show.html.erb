@@ -13,9 +13,6 @@
   				<p><%= @spot.address %></p><br>
   				<p><%= @spot.introduction %></p><br>
 
-  		     <!--<%# if logged_in? %>-->
-           <!--     <%#= render 'favorites/like_button', spot: @spot %>-->
-
           <h5>「行った」レビュー</h5>
           <div class="reviews-form">
             <!--口コミ投稿フォーム-->
@@ -25,40 +22,6 @@
             <!--<%#= render "admin/reviews/index", spot: @spot %>-->
             <%= render "public/reviews/list", spot: @spot, review: @review, reviews: @reviews %>
           </div>
-                <!--口コミ-->
-           <!--     <%# @reviews.each do |c| %>-->
-           <!--         <div>-->
-           <!--           　<%# unless c.customer.blank? %>-->
-           <!--         　　      <%#= link_to c.customer.name, admin_customer_path(c.customer_id)%>-->
-           <!--         　　<%# end %>-->
-           <!--         　　<h5><%#= c.title %></h5>-->
-           <!--       　　　　<%#= c.content %>-->
-           <!--     　　</div>-->
-          　<!--　　　<%# end %>-->
-
-                <!--口コミ投稿フォーム-->
-           <!--     <div class="jumbotron bg-light">-->
-           <!--         <h4>口コミを投稿する</h4>-->
-           <!--         <%#= form_with model: [@spot, @reviews], local: true do |f| %>-->
-           <!--             <div class="form-group">-->
-           <!--                 <%#= f.label :title, "タイトル"%>-->
-           <!--                 <%#= f.text_field :title, class: "form-control" %>-->
-           <!--             </div>-->
-           <!--             <div class="form-group">-->
-           <!--                 <%#= f.label :comment, "コメント"  %>-->
-           <!--                 <%#= f.text_area :comment, class: "form-control" %>-->
-           <!--             </div>-->
-
-           <!--             <#%= f.submit 'コメントする', class: "btn btn-primary" %>-->
-           <!--         <%# end %>-->
-           <!--     </div>-->
-           <!-- <%# else %>-->
-           <!--     <div class="text-center">-->
-           <!--         <h5 class="mt-5">口コミお気に入り機能を使うにはログインしてください</h5>-->
-           <!--         <p>会員登録がまだの方は　→　<%#= link_to '会員登録', signup_path %>　</p>-->
-           <!--     </div>-->
-           <!-- <%# end %>-->
-        	  <!--</div>-->
   	    </div>
       </div>
 	  </div>

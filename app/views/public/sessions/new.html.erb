@@ -1,13 +1,8 @@
 <div class="container">
-<h2>ログイン</h2>
-
-<%= form_with model: @customer, url: session_path(resource_name), local: true do |f| %>
-
-    <!--<div class="field">-->
-    <!--  <%#= f.label :nickname, "ニックネーム"%><br>-->
-    <!--  <%#= f.text_field :nickname %>-->
-    <!--</div>-->
-
+  <h2>ログイン</h2>
+  
+  <%= form_with model: @customer, url: session_path(resource_name), local: true do |f| %>
+  
     <div class="field">
       <%= f.label :email, "メールアドレス" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -21,6 +16,7 @@
     <div class="actions">
       <%= f.submit "ログイン", class: "btn btn-primary" %>
     </div>
+    
   <% end %>
   
   <h6 class="text-left">登録がお済みでない方</h6>
