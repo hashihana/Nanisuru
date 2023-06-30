@@ -25,7 +25,7 @@
 							<% end %>
 							<p class="my-0">ジャンル：<%= spot.genre.name %></p>
 							<!--<div class="average-review-rating" data-score=<%= spot.reviews.average(:all_rating) %>></div>-->
-	　						<span>総合評価：<%= spot.reviews.average(:all_rating).to_f.round(1) %></span>
+　						<span>総合評価：<%= spot.reviews.average(:all_rating).to_f.round(1) %></span>
 	　				</div>
 					<% end %>
 				</div>
