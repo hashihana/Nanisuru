@@ -1,8 +1,8 @@
 <div class="container wrapper flex">
 	<div class="row">
-  	<div class="col-md-3 border rounded">
-  		<%= render 'admin/spots/search_sidebar', genres: @genres %>
-  	</div>
+	  	<div class="col-md-3 border rounded">
+	  		<%= render 'admin/spots/search_sidebar', genres: @genres %>
+	  	</div>
 		<div class="content col-md-9">
 			<% if @genre.present? %>
 				<h2 class="section-ttl">[管理者]ジャンル：<%= @genre.name %> (全<%= @all_spots_count %>件)</h2>
@@ -12,8 +12,8 @@
 			<% if @spots.first %>
 				<div>
 					<i class="fas fa-sort-amount-down"></i><%= link_to '新しい順', admin_spots_path(latest: "true") %>
-		      <i class="fas fa-sort-amount-up-alt"></i><%= link_to '古い順', admin_spots_path(old: "true") %>
-		    </div>
+			     	<i class="fas fa-sort-amount-up-alt"></i><%= link_to '古い順', admin_spots_path(old: "true") %>
+			    </div>
 				<div class="spots row">
 					<% @spots.each do |spot| %>
 						<div class="col-4 mb-5">
@@ -23,8 +23,8 @@
 							<% end %>
 							<p class="my-0">ジャンル：<%= spot.genre.name %></p>
 							<!--<div class="average-review-rating" data-score=<%= spot.reviews.average(:all_rating) %>></div>-->
-	　					<span>総合評価：<%= spot.reviews.average(:all_rating).to_f.round(1) %></span>
-　					</div>
+		　					<span>総合評価：<%= spot.reviews.average(:all_rating).to_f.round(1) %></span>
+		　				</div>
 					<% end %>
 				</div>
 				<%= paginate @spots %>
