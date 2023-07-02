@@ -7,12 +7,17 @@ class Spot < ApplicationRecord
     where(["name like? OR address like? OR introduction like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   end
 
-  scope :where_genre_active, -> { joins(:genre).where(genres: { is_active: true }) }
-
   belongs_to :prefecture
-
+  
+  scope :where_genre_active, -> { joins(:genre).where(genres: { is_active: true }) }
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
+  
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :introduction, presence: true
+  validates :genre_id, presence: true
+  validates :prefecture_id, presence: true
 
   # attr_accessor :average
   def average_score

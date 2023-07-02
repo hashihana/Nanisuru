@@ -1,5 +1,5 @@
 <%= form_with(model: @review, url: spot_reviews_path(spot.id), local: false) do |f| %>
-
+  <%= render "public/shared/error_messages", resource: @review %>
   <p>総合評価：<%= @reviews.average(:all_rating).to_f.round(1) %></p>
   <div data-score=<%= @reviews.average(:all_rating) %>></div>
   <div class="position-static">

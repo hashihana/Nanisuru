@@ -2,7 +2,7 @@
 	<h2 class="section-ttl">スポット新規登録</h2>
   <div class="row">
 		<%= form_with model: @spot, url: admin_spots_path do |f| %>
-		<!--<%#= render 'layouts/error_messages', resource: item %>-->
+			<%= render "public/shared/error_messages", resource: @spot %>
 			<div class="flex">
 				<div class="image_field">
 					<%= image_tag (@spot.spot_image.attached? ? @spot.image : 'no_image.jpg'), id: "img_prev", class: "admin_spot_image" %>
