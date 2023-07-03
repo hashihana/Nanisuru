@@ -1,11 +1,7 @@
-<div class="my-2 alert-success"><%= flash[:success] %></div>
 <div class="container wrapper flex">
 	<h2 class="section-ttl">ジャンル管理</h2>
- 	<div class="row mt-5">
-		<%= render 'genre_errors', genre: @genre %>
-
+ 	<div class="row mt-3">
 		<div class="col-md-12 mt-5">
-			<strong>新規登録</strong>
   		<%= render 'form', genre: @genre, url: admin_genres_path, submit: '登録' %>
 		</div>
 	</div>
