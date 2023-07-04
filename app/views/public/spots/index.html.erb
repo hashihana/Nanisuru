@@ -19,8 +19,8 @@
 
    			<div class="row">
   				<% @spots.each do |spot| %>
- 					<div class="col-md-5 m-1 d-flex">
-						<div class="card" style="width: 18rem;">
+ 					<div class="col-md-5 m-2 d-flex">
+						<div class="card" style="width: 20rem;">
 							<%= image_tag spot.get_spot_image(250,200), class: "img-thumbnail spot_image" %>
 					  	<div class="card-body">
 					    	<h5 class="card-title"><%= spot.name %></h5>
@@ -35,7 +35,7 @@
 					</div>
 					<% end %>
 				</div>
-				<%= paginate @spots %>
+				<%= paginate @spots, theme: 'twitter-bootstrap-4' %>
 			<% else %>
 				<h3>対応するスポットはありませんでした。</h3>
 			<% end %>
