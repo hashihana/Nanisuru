@@ -17,17 +17,32 @@
 			    <i class="fas fa-sort-numeric-down-alt"></i><%= link_to '評価の高い順', spots_path(star_count: "true") %>
 				</div>
 
-				<div class="spots row">
-					<% @spots.each do |spot| %>
-						<div class="col-4 mb-5">
-							<%= link_to spot_path(spot) do %>
+   			<div class="row">
+  				<% @spots.each do |spot| %>
+ 					<div class="col-md-5 m-1 d-flex">
+						<div class="card" style="width: 18rem;">
 							<%= image_tag spot.get_spot_image(250,200), class: "img-thumbnail spot_image" %>
-								<div><%= spot.name %></div>
-							<% end %>
-							<p class="my-0">ジャンル：<%= spot.genre.name %></p>
-							<!--<div class="average-review-rating" data-score=<%= spot.reviews.average(:all_rating) %>></div>-->
-		　						<span>総合評価：<%= spot.reviews.average(:all_rating).to_f.round(1) %></span>
-		　				</div>
+					  	<div class="card-body">
+					    	<h5 class="card-title"><%= spot.name %></h5>
+					    	<p class="card-text"><%= spot.introduction.truncate(30) %></p>
+					    	<ul class="list-group list-group-flush">
+							    <li class="list-group-item">ジャンル：<%= spot.genre.name %></li>
+							    <li class="list-group-item">総合評価：<%= spot.reviews.average(:all_rating).to_f.round(1) %></li>
+							  </ul>
+								<a href="#" class="btn btn-primary">詳細を見る</a>
+					  	</div>
+						</div>
+					</div>
+				
+						<!--<div class="col-4 mb-5">-->
+						<!--	<%#= link_to spot_path(spot) do %>-->
+						<!--	<%#= image_tag spot.get_spot_image(250,200), class: "img-thumbnail spot_image" %>-->
+						<!--		<div><%#= spot.name %></div>-->
+						<!--	<%# end %>-->
+						<!--	<p class="my-0">ジャンル：<%#= spot.genre.name %></p>-->
+							<!--<div class="average-review-rating" data-score=<%#= spot.reviews.average(:all_rating) %>></div>-->
+		　			<!--			<span>総合評価：<%#= spot.reviews.average(:all_rating).to_f.round(1) %></span>-->
+		　			<!--	</div>-->
 					<% end %>
 				</div>
 				<%= paginate @spots %>
