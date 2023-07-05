@@ -5,7 +5,6 @@
     </div>
     <div class="content col-md-9">
 		  <h2 class="section-ttl"><%= @spot.name %></h2>
-		  <!--<%#= render 'layouts/error_messages', resource: @ %>-->
 		  <div class="flex">
 			  <%= image_tag @spot.get_spot_image(250, 200), class: "img-thumbnail spot_image_show" %>
   			<div class="spot_info">
@@ -14,12 +13,11 @@
   				<p><%= @spot.introduction %></p><br>
 
           <h5>「行った」レビュー</h5>
-          <div class="reviews-form">
+          <div class="reviews-form mb-3">
             <!--口コミ投稿フォーム-->
             <%= render "public/reviews/form", spot: @spot, review: @review %>
           </div>
           <div class="reviews-index">
-            <!--<%#= render "admin/reviews/index", spot: @spot %>-->
             <%= render "public/reviews/list", spot: @spot, review: @review, reviews: @reviews %>
           </div>
   	    </div>
