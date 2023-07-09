@@ -1,11 +1,11 @@
 <%= form_with url: admin_spots_path, method: :get, local: true do |f| %>
   <strong>ジャンル</strong><br>
-  <%= f.radio_button :genre_id, "", checked: params[:genre_id] == '' %>
-  <%= f.label 'すべてのジャンル' %> <br>
-  <% genres.each do |genre| %>
-    <%= f.radio_button :genre_id, genre.id, checked: params[:genre_id] == genre.id.to_s %>
-    <%= f.label genre.name %><br>
-  <% end %>
+    <%= f.radio_button :genre_id, "", checked: params[:genre_id] == '' %>
+    <%= f.label 'すべてのジャンル' %> <br>
+    <% genres.each do |genre| %>
+      <%= f.radio_button :genre_id, genre.id, checked: params[:genre_id] == genre.id.to_s %>
+      <%= f.label genre.name %><br>
+    <% end %>
 
   <strong>都道府県</strong><br>
     <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, selected: params[:prefecture_id], include_blank: true) %><br>

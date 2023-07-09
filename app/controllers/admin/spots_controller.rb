@@ -10,7 +10,7 @@ class Admin::SpotsController < ApplicationController
     spots = params[:keyword].present? ? Spot.search(params[:keyword]) : Spot.all
     spots = spots.where(genre_id: params[:genre_id]) if params[:genre_id].present?
     spots = spots.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present?
-     if params[:latest]
+    if params[:latest]
       spots = spots.latest
     elsif params[:old]
       spots = spots.old

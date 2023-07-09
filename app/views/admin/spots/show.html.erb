@@ -1,29 +1,27 @@
 <div class="container wrapper flex">
-    <div class="row">
-        <div class="col-md-3 border rounded">
-    	    <%= render 'admin/spots/search_sidebar', genres: @genres %>
-        </div>
-    	<div class="content col-md-9">
-    	    <h2 class="section-ttl"><%= @spot.name %></h2>
-    		<div class="flex">
-    		    <%= image_tag @spot.get_spot_image(400, 400), class: "img-thumbnail spot_image_show" %>
-    			<div class="spot_info">
-      			    <p>ジャンル: <%= link_to @spot.genre.name, admin_spots_path(genre_id: @spot.genre_id) %></p>
-      				<p><%= @spot.address %></p><br>
-      			    <p><%= @spot.introduction %></p><br>
-    
-                  	<div class="text-right">
-                        <%= link_to "編集する",edit_admin_spot_path(@spot.id), class:"btn btn-outline-primary" %>
-                        <%= link_to "削除する",admin_spot_path(@spot.id), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-outline-danger" %>
-                    </div>
-    
-                     <h5>カスタマーレビュー</h5>
-                     <div class="average-review-rating" data-score=<%= @spot.reviews.average(:all_rating) %>></div>
-            　			<p>総合評価：<%= @spot.reviews.average(:all_rating).to_f.round(1) %></p>
-                        <%= render "admin/reviews/list", spot: @spot, review: @review, reviews: @reviews %>
-                    </div>
-    	        </div>
+  <div class="row">
+    <div class="col-md-3 border rounded">
+      <%= render 'admin/spots/search_sidebar', genres: @genres %>
+    </div>
+    <div class="content col-md-9">
+      <h2 class="section-ttl"><%= @spot.name %></h2>
+    	<div class="flex">
+    	  <%= image_tag @spot.get_spot_image(400, 400), class: "img-thumbnail spot_image_show" %>
+    		  <div class="spot_info">
+      		  <p>ジャンル: <%= link_to @spot.genre.name, admin_spots_path(genre_id: @spot.genre_id) %></p>
+      			<p><%= @spot.address %></p><br>
+      			<p><%= @spot.introduction %></p><br>
+            <div class="text-right">
+              <%= link_to "編集する",edit_admin_spot_path(@spot.id), class:"btn btn-outline-primary" %>
+              <%= link_to "削除する",admin_spot_path(@spot.id), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-outline-danger" %>
             </div>
-	    </div>
+            <h5>カスタマーレビュー</h5>
+            <div class="average-review-rating" data-score=<%= @spot.reviews.average(:all_rating) %>></div>
+            <p>総合評価：<%= @spot.reviews.average(:all_rating).to_f.round(1) %></p>
+              <%= render "admin/reviews/list", spot: @spot, review: @review, reviews: @reviews %>
+          </div>
+        </div>
+      </div>
+    </div>
 	</div>
 </div>

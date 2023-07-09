@@ -1,8 +1,8 @@
 <div class="container wrapper flex">
 	<div class="row">
-	  	<div class="col-md-3 border rounded">
-	  		<%= render 'admin/spots/search_sidebar', genres: @genres %>
-	  	</div>
+		<div class="col-md-3 border rounded">
+	 		<%= render 'admin/spots/search_sidebar', genres: @genres %>
+	  </div>
 		<div class="content col-md-9">
 			<% if @genre.present? %>
 				<h2 class="section-ttl">[管理者]ジャンル：<%= @genre.name %> (全<%= @all_spots_count %>件)</h2>
@@ -27,7 +27,7 @@
 		　				</div>
 					<% end %>
 				</div>
-				<%= paginate @spots %>
+				<%= paginate @spots, theme: 'twitter-bootstrap-4' %>
 			<% else %>
 				<h3>対応するスポットはありませんでした。</h3>
 			<% end %>

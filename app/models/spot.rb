@@ -19,7 +19,6 @@ class Spot < ApplicationRecord
   validates :genre_id, presence: true
   validates :prefecture_id, presence: true
 
-  # attr_accessor :average
   def average_score
     self.reviews.sum(:all_rating) / self.reviews.length
   end
