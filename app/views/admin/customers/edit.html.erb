@@ -19,6 +19,8 @@
 					</tr>
 					<tr>
 						<td>会員ステータス</td>
+						<!--<td><input type="radio" value="false" name="customer[is_active]" id="customer_is_active_false" checked: params[:is_active] == 'false' /><label for="customer_is_active_false">退会済み</label></td>-->
+						<!--<td><input type="radio" value="true" name="customer[is_active]" id="customer_is_active_true" /><label for="customer_is_active_true">有効</label></td>-->
 						<td><%= f.radio_button :is_active, false %><%= f.label :is_active, "退会済み", class: "text-active" %></td>
 						<td><%= f.radio_button :is_active, true %><%= f.label :is_active, "有効", class: "text-invalid" %></td>
 					</tr>

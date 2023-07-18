@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   
   before_action :is_guest?
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def show
     @customer = Customer.find(params[:id])
@@ -35,6 +36,13 @@ class Public::CustomersController < ApplicationController
 
 
   private
+  
+  def is_matching_login_user
+    customer = Customer.find(params[:id])
+    unless customer.id == current_customer.id
+      redirect_to spots_path
+    end
+  end
 
   def set_current_customer
     @customer = current_customer
