@@ -45,7 +45,7 @@
               <% end %>
             </div>
           </td>
-  				<td style="width: 15%"><%= link_to "削除", customer_review_path(@customer, review), method: :delete, class: "btn btn-danger pull-right" %></td>
+  				<td style="width: 15%"><%= link_to "削除", customer_review_path(@customer, review), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger pull-right" %></td>
   			</tr>
       	<script>
           $(document).ready(function () {
