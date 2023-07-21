@@ -2,10 +2,10 @@
 
   <strong>ジャンル</strong><br>
     <%= f.radio_button :genre_id, "", checked: params[:genre_id] == '' %>
-    <%= f.label 'すべてのジャンル' %> <br>
+    <%= f.label :genre_id, 'すべてのジャンル', value: '' %> <br>
     <% genres.each do |genre| %>
       <%= f.radio_button :genre_id, genre.id, checked: params[:genre_id] == genre.id.to_s %>
-      <%= f.label genre.name %><br>
+      <%= f.label :genre_id, genre.name, value: genre.id %><br>
     <% end %>
 
   <strong>都道府県</strong><br>
