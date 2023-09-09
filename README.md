@@ -42,7 +42,7 @@
 https://docs.google.com/spreadsheets/d/1F-pYoFfnhLf6kqo3VEGi9HyxfF2uO40ArZBaE2N5cAY/edit?usp=sharing
 
 ## 開発環境
-OS：macOS Ventura 13.0.1 
+OS：Linux(AmazonLinux2)
 言語：HTML,CSS,JavaScript,Ruby
 フレームワーク：Ruby on Rails
 JSライブラリ：jQuery
