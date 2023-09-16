@@ -19,20 +19,22 @@
 
    			<div class="row">
   				<% @spots.each do |spot| %>
- 					<div class="col-md-5 m-2 d-flex">
-						<div class="card" style="width: 20rem;">
-							<%= image_tag spot.get_spot_image(250,200), class: "img-thumbnail spot_image" %>
-					  	<div class="card-body">
-					    	<h5 class="card-title"><%= spot.name %></h5>
-					    	<p class="card-text"><%= spot.introduction.truncate(30) %></p>
-					    	<ul class="list-group list-group-flush">
-							    <li class="list-group-item">ジャンル：<%= spot.genre.name %></li>
-							    <li class="list-group-item">総合評価：<%= spot.reviews.average(:all_rating).to_f.round(1) %></li>
-							  </ul>
-							  <div><%= link_to "詳細を見る", spot_path(spot), class: "btn btn-outline-secondary" %></div>
-					  	</div>
-						</div>
-					</div>
+	  				<% if spot.genre.is_active == true %>
+		 					<div class="col-md-5 m-2 d-flex">
+								<div class="card" style="width: 20rem;">
+									<%= image_tag spot.get_spot_image(250,200), class: "img-thumbnail spot_image" %>
+							  	<div class="card-body">
+							    	<h5 class="card-title"><%= spot.name %></h5>
+							    	<p class="card-text"><%= spot.introduction.truncate(30) %></p>
+							    	<ul class="list-group list-group-flush">
+									    <li class="list-group-item">ジャンル：<%= spot.genre.name %></li>
+									    <li class="list-group-item">総合評価：<%= spot.reviews.average(:all_rating).to_f.round(1) %></li>
+									  </ul>
+									  <div><%= link_to "詳細を見る", spot_path(spot), class: "btn btn-outline-secondary" %></div>
+							  	</div>
+								</div>
+							</div>
+						<% end %>
 					<% end %>
 				</div>
 				<%= paginate @spots, theme: 'twitter-bootstrap-4' %>
