@@ -57,7 +57,7 @@
 みんなの口コミや評価を参考にしたい時。
 
 ## 設計書
-##実装機能リストURL
+### 実装機能リストURL
 https://docs.google.com/spreadsheets/d/1F-pYoFfnhLf6kqo3VEGi9HyxfF2uO40ArZBaE2N5cAY/edit?usp=sharing
 
 ## 開発環境
